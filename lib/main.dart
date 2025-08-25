@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:main_cartify/presentation/screens/splashscreen.dart';
+import 'package:main_cartify/modules/startup/features/splashscreen/presentation/screens/splashscreen.dart';
 import 'package:main_cartify/utils/app_theme.dart';
 import 'package:overlay_support/overlay_support.dart';
 
