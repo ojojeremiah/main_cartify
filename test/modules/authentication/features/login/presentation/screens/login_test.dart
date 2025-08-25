@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:main_cartify/presentation/screens/login.dart';
+import 'package:main_cartify/modules/authentication/features/login/presentation/screens/login.dart';
 
 void main() {
   testWidgets('renders login form with email & password fields',
