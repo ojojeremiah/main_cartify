@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:main_cartify/domain/model/splash.dart';
-import 'package:main_cartify/modules/authentication/features/login/presentation/screens/login.dart';
+import 'package:main_cartify/modules/authentication/features/signup/presentation/screens/signup.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -116,7 +116,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const LoginPage(),
+                          builder: (_) => const Signup(),
                         ),
                       );
                     },
