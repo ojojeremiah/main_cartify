@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:main_cartify/modules/authentication/features/signup/presentation/screens/signup.dart';
+import 'package:main_cartify/modules/commons/Bottom_navbar_widget/Bottom_navbar.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -159,10 +161,10 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                                 //  Get.to( AccountValidation());
                               } else {
-  // Navigator.pushReplacement(
-  //   context,
-  //   MaterialPageRoute(builder: (_) => BottomNav()),
-  // );
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (_) => BottomNav()),
+  );
 }
 
                             },
@@ -242,7 +244,12 @@ class _LoginPageState extends State<LoginPage> {
                               margin: const EdgeInsets.only(left: 85),
                               child: const Text("Don't have an account?")),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (_) => Signup()),
+  );
+                              },
                               child: const Text(
                                 "Sign up",
                                 style: TextStyle(color: AppColors.brandColor),

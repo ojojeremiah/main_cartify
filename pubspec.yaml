@@ -41,6 +41,7 @@ dependencies:
   flutter_native_splash: ^2.4.6
   dots_indicator: ^4.0.1
   logger: ^2.6.1
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
