@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:main_cartify/modules/authentication/features/signup/presentation/screens/signup.dart';
-import 'package:main_cartify/modules/commons/bottom_navbar_widget/Bottom_navbar.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class LoginPage extends StatefulWidget {

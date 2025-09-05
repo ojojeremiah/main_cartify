@@ -36,11 +36,12 @@ class _BottomNavState extends State<BottomNav> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.grey[100],
-            toolbarHeight: Dimension.mmslargeSize,
-            automaticallyImplyLeading: false,
-            title: currentAppbar),
+          elevation: 0,
+          backgroundColor: Colors.grey[100],
+          toolbarHeight: Dimension.mmslargeSize,
+          automaticallyImplyLeading: false,
+          title: currentAppbar,
+        ),
         backgroundColor: Colors.grey[100],
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -54,18 +55,16 @@ class _BottomNavState extends State<BottomNav> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.brandColor,
-            child: const Icon(
-              Icons.shopping_bag_outlined,
-              color: AppColors.lightCardColor,
-            ),
-            onPressed: () {
-
-            }),
+          backgroundColor: AppColors.brandColor,
+          child: const Icon(
+            Icons.shopping_bag_outlined,
+            color: AppColors.lightCardColor,
+          ),
+          onPressed: () {},
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          // notchMargin: 0,
           child: SizedBox(
             height: 60,
             child: Row(
@@ -85,11 +84,11 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: MediaQuery.sizeOf(context).width / Dimension.mmediumsize,
-                            left: MediaQuery.sizeOf(context).width / Dimension.slargeSize,
-                            right: MediaQuery.sizeOf(context).width / Dimension.msmall),
+                          top: MediaQuery.sizeOf(context).width / Dimension.mmediumsize,
+                          left: MediaQuery.sizeOf(context).width / Dimension.slargeSize,
+                          right: MediaQuery.sizeOf(context).width / Dimension.msmall,
+                        ),
                         child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Icon(
                               currentTab == 0
@@ -100,10 +99,6 @@ class _BottomNavState extends State<BottomNav> {
                                   ? AppColors.brandColor
                                   : AppColors.blackColor,
                             ),
-                            // Text(
-                            //   'Home',
-                            //   style: TextStyle(color: currentTab == 0 ? AppColors.brandColor : AppColors.blackColor),
-                            // )
                           ],
                         ),
                       ),
@@ -111,11 +106,7 @@ class _BottomNavState extends State<BottomNav> {
                     MaterialButton(
                       minWidth: Dimension.xmmmedium,
                       onPressed: () {
-                        // setState(() {
-                        //   currentScreen = const Categories();
-                        //   currentTab = 1;
-                        //   currentAppbar = const CategoriesAppbar();
-                        // });
+                        // Handle categories
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -127,10 +118,6 @@ class _BottomNavState extends State<BottomNav> {
                                 ? AppColors.brandColor
                                 : AppColors.blackColor,
                           ),
-                          // Text(
-                          //   'Home',
-                          //   style: TextStyle(color: currentTab == 0 ? AppColors.brandColor : AppColors.blackColor),
-                          // )
                         ],
                       ),
                     ),
@@ -142,11 +129,7 @@ class _BottomNavState extends State<BottomNav> {
                     MaterialButton(
                       minWidth: Dimension.xmmmedium,
                       onPressed: () {
-                        setState(() {
-                          // currentScreen = Favourites();
-                          // currentAppbar = const FavouritesAppBar();
-                          // currentTab = 2;
-                        });
+                        // Handle favourites
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -160,27 +143,20 @@ class _BottomNavState extends State<BottomNav> {
                                 ? AppColors.brandColor
                                 : AppColors.blackColor,
                           ),
-                          // Text(
-                          //   'Home',
-                          //   style: TextStyle(color: currentTab == 0 ? AppColors.brandColor : AppColors.blackColor),
-                          // )
                         ],
                       ),
                     ),
                     MaterialButton(
                       minWidth: Dimension.xmmmedium,
                       onPressed: () {
-                        setState(() {
-                          // currentScreen = const Profile();
-                          // currentAppbar = const ProfileAppBar();
-                          // currentTab = Dimension.ssmallestSize;
-                        });
+                        // Handle profile
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: MediaQuery.sizeOf(context).width / Dimension.mslargeSize,
-                            left: MediaQuery.sizeOf(context).width / Dimension.msmall,
-                            right: MediaQuery.sizeOf(context).width / Dimension.slargeSize),
+                          top: MediaQuery.sizeOf(context).width / Dimension.mslargeSize,
+                          left: MediaQuery.sizeOf(context).width / Dimension.msmall,
+                          right: MediaQuery.sizeOf(context).width / Dimension.slargeSize,
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -193,10 +169,6 @@ class _BottomNavState extends State<BottomNav> {
                                   ? AppColors.brandColor
                                   : AppColors.blackColor,
                             ),
-                            // Text(
-                            //   'Home',
-                            //   style: TextStyle(color: currentTab == 0 ? AppColors.brandColor : AppColors.blackColor),
-                            // )
                           ],
                         ),
                       ),
