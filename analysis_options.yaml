@@ -21,8 +21,50 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    always_use_package_imports: true
+    empty_statements: true
+    hash_and_equals: true
+    collection_methods_unrelated_type: true
+    use_key_in_widget_constructors: true
+    valid_regexps: true
+    always_declare_return_types: true
+    await_only_futures: true
+    eol_at_end_of_file: true
+    exhaustive_cases: true
+    file_names: true
+    no_default_cases: true
+    parameter_assignments: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_single_quotes: true
+    sort_child_properties_last: true
+    unawaited_futures: true
+    require_trailing_commas: true
+    always_put_control_body_on_new_line: true
+    annotate_overrides: true
+    directives_ordering: true
+    null_check_on_nullable_type_parameter: true
+    package_names: true
+    package_prefixed_library_names: true
+    unnecessary_await_in_return: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_const: true
+    unnecessary_constructor_name: true
+    unnecessary_getters_setters: true
+    unnecessary_library_directive: true
+    unnecessary_new: true
+    unnecessary_null_aware_assignments: true
+    unnecessary_null_checks: true
+    unnecessary_null_in_if_null_operators: true
+    unnecessary_nullable_for_final_variable_declarations: true
+    unnecessary_overrides: true
+    unnecessary_parenthesis: true
+    avoid_print: false
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+  analyzer:
+
+    errors:
+      missing_required_param: error
+      missing_return: error
+      invalid_assignment: warning
+      invalid_annotation_target: ignore
