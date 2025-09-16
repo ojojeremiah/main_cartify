@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main_cartify/modules/commons/AppBars_widgets/MainScree.dart';
+import 'package:main_cartify/dimension/dimension.dart';
+import 'package:main_cartify/modules/commons/appBars_widgets/MainScreen.dart';
 import 'package:main_cartify/modules/home/features/homescreen/presentation/screens/home.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
@@ -37,7 +38,7 @@ class _BottomNavState extends State<BottomNav> {
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.grey[100],
-            toolbarHeight: 80,
+            toolbarHeight: Dimension.mmslargeSize,
             automaticallyImplyLeading: false,
             title: currentAppbar),
         backgroundColor: Colors.grey[100],
@@ -84,9 +85,9 @@ class _BottomNavState extends State<BottomNav> {
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: MediaQuery.sizeOf(context).width / 25,
-                            left: MediaQuery.sizeOf(context).width / 35,
-                            right: MediaQuery.sizeOf(context).width / 15),
+                            top: MediaQuery.sizeOf(context).width / Dimension.mmediumsize,
+                            left: MediaQuery.sizeOf(context).width / Dimension.slargeSize,
+                            right: MediaQuery.sizeOf(context).width / Dimension.msmall),
                         child: Column(
                           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -94,7 +95,7 @@ class _BottomNavState extends State<BottomNav> {
                               currentTab == 0
                                   ? Icons.home_filled
                                   : Icons.home_outlined,
-                              size: 30,
+                              size: Dimension.xmmmedium,
                               color: currentTab == 0
                                   ? AppColors.brandColor
                                   : AppColors.blackColor,
@@ -108,7 +109,7 @@ class _BottomNavState extends State<BottomNav> {
                       ),
                     ),
                     MaterialButton(
-                      minWidth: 30,
+                      minWidth: Dimension.xmmmedium,
                       onPressed: () {
                         // setState(() {
                         //   currentScreen = const Categories();
@@ -120,9 +121,9 @@ class _BottomNavState extends State<BottomNav> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            size: 30,
+                            size: Dimension.xmmmedium,
                             Icons.category,
-                            color: currentTab == 1
+                            color: currentTab == Dimension.xssmallest
                                 ? AppColors.brandColor
                                 : AppColors.blackColor,
                           ),
@@ -139,7 +140,7 @@ class _BottomNavState extends State<BottomNav> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MaterialButton(
-                      minWidth: 30,
+                      minWidth: Dimension.xmmmedium,
                       onPressed: () {
                         setState(() {
                           // currentScreen = Favourites();
@@ -151,11 +152,11 @@ class _BottomNavState extends State<BottomNav> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            size: 30,
-                            currentTab == 2
+                            size: Dimension.xmmmedium,
+                            currentTab == Dimension.xsmallest
                                 ? Icons.favorite
                                 : Icons.favorite_outline,
-                            color: currentTab == 2
+                            color: currentTab == Dimension.xsmallest
                                 ? AppColors.brandColor
                                 : AppColors.blackColor,
                           ),
@@ -167,28 +168,28 @@ class _BottomNavState extends State<BottomNav> {
                       ),
                     ),
                     MaterialButton(
-                      minWidth: 30,
+                      minWidth: Dimension.xmmmedium,
                       onPressed: () {
                         setState(() {
                           // currentScreen = const Profile();
                           // currentAppbar = const ProfileAppBar();
-                          // currentTab = 3;
+                          // currentTab = Dimension.ssmallestSize;
                         });
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: MediaQuery.sizeOf(context).width / 75,
-                            left: MediaQuery.sizeOf(context).width / 15,
-                            right: MediaQuery.sizeOf(context).width / 35),
+                            top: MediaQuery.sizeOf(context).width / Dimension.mslargeSize,
+                            left: MediaQuery.sizeOf(context).width / Dimension.msmall,
+                            right: MediaQuery.sizeOf(context).width / Dimension.slargeSize),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              size: 30,
-                              currentTab == 3
+                              size: Dimension.xmmmedium,
+                              currentTab == Dimension.ssmallest
                                   ? Icons.person
                                   : Icons.person_outline,
-                              color: currentTab == 3
+                              color: currentTab == Dimension.ssmallest
                                   ? AppColors.brandColor
                                   : AppColors.blackColor,
                             ),

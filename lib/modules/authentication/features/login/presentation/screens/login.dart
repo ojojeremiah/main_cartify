@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:main_cartify/modules/authentication/features/signup/presentation/screens/signup.dart';
-import 'package:main_cartify/modules/commons/Bottom_navbar_widget/Bottom_navbar.dart';
+import 'package:main_cartify/modules/commons/bottom_navbar_widget/Bottom_navbar.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,16 +14,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _email = TextEditingController(text: "mor_2314");
-  final TextEditingController _password = TextEditingController(text: "83r5^_");
+  final TextEditingController _email = TextEditingController(text: 'mor_2314');
+  final TextEditingController _password = TextEditingController(text: '83r5^_');
   bool _confirmVisible = true;
   bool task = false;
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = MediaQuery.sizeOf(context).width / 26;
-    double inputBarLength = MediaQuery.sizeOf(context).width / 70;
-    double emailAndPasswordIconSize = MediaQuery.sizeOf(context).width / 16;
+    final double fontSize = MediaQuery.sizeOf(context).width / 26;
+    final double inputBarLength = MediaQuery.sizeOf(context).width / 70;
+    final double emailAndPasswordIconSize = MediaQuery.sizeOf(context).width / 16;
 
     // final userNotifier = context.watch<UserNotifier>();
 
@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     const Text(
-                      "Login to Your Account",
+                      'Login to Your Account',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                               size: emailAndPasswordIconSize),
                           Container(
                               margin: const EdgeInsets.only(left: 10),
-                              child: Text("Email",
+                              child: Text('Email',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: fontSize)))
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                         key: const Key('emailField'),
                         controller: _email,
                         validator: (v) =>
-                            v!.isEmpty ? "Email Required" : null,
+                            v!.isEmpty ? 'Email Required' : null,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(10),
                           hintText: 'aishannor41@gmail.com',
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                               margin: const EdgeInsets.only(left: 10),
                               child: Text(
-                                "Password",
+                                'Password',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: fontSize),
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                             key: const Key('passwordField'),
                             controller: _password,
                             validator: (v) =>
-                                v!.isEmpty ? "Password Required" : null,
+                                v!.isEmpty ? 'Password Required' : null,
                             obscureText: _confirmVisible,
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(10),
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             },
                         child: const Text(
-                                "Log In",
+                                'Log In',
                                 style: TextStyle(
                                     color: AppColors.whiteColor, fontSize: 18),
                               ),
@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.all(8.0),
                       child: Center(
                           child: Text(
-                        "Or Continue with",
+                        'Or Continue with',
                         style: TextStyle(fontSize: 18),
                       )),
                     ),
@@ -201,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/facebook.svg")),
+                                    'assets/svg/facebook.svg')),
                           ),
                           Container(
                             width: 60,
@@ -216,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/google.svg")),
+                                    'assets/svg/google.svg')),
                           ),
                           Container(
                             width: 60,
@@ -231,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/apple.svg")),
+                                    'assets/svg/apple.svg')),
                           ),
                         ],
                       ),
@@ -251,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
   );
                               },
                               child: const Text(
-                                "Sign up",
+                                'Sign up',
                                 style: TextStyle(color: AppColors.brandColor),
                               ))
                         ],

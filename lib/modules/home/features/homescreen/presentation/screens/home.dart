@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/commons/Brands_widget/Brands.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -30,11 +33,11 @@ class _MainScreenState extends State<MainScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(10.0),
+          Padding(
+            padding: EdgeInsets.all(Dimension.small),
             child: Text(
-              "Brands",
-              style: TextStyle(fontSize: 25),
+              'Brands',
+              style: TextStyle(fontSize: Dimension.mmediumsize),
             ),
           ),
           isLoading
@@ -44,33 +47,33 @@ class _MainScreenState extends State<MainScreen> {
                   highlightColor: Colors.white,
                   child: const Brands()),
           const Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(Dimension.small),
             child: Text(
-              "Popular Shoes",
-              style: TextStyle(fontSize: 20),
+              'Popular Shoes',
+              style: TextStyle(fontSize: Dimension.mediumsize),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding:  EdgeInsets.all(Dimension.mediumsize),
             child: Container(
               decoration: const BoxDecoration(
                   color: AppColors.lightCardColor,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+                  borderRadius: BorderRadius.all(Radius.circular(Dimension.msmall))),
               // margin: EdgeInsets.only(
               //     left: MediaQuery.sizeOf(context).width / 30,
               //     right: MediaQuery.sizeOf(context).width / 30),
-              height: 250,
+              height: Dimension.xmmLarge,
               width: MediaQuery.sizeOf(context).width / 0.5,
               child: Stack(
                 children: [
                   Container(
-                    height: 170,
-                    width: 340,
-                    margin: const EdgeInsets.only(left: 30, top: 10, right: 30),
+                    height: Dimension.mlargesize,
+                    width: Dimension.xxlargeSize,
+                    margin: const EdgeInsets.only(left: Dimension.xmmmedium, top: Dimension.small, right: Dimension.xmmmedium),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(Dimension.small),
                         image: const DecorationImage(
-                          image: AssetImage("assets/images/beautiful-nike.jpg"),
+                          image: AssetImage('assets/images/beautiful-nike.jpg'),
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -78,59 +81,59 @@ class _MainScreenState extends State<MainScreen> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 10, left: 40),
+                        margin: const EdgeInsets.only(top: Dimension.small, left: Dimension.xmmLarge),
                         child: const Text(
-                          "Nike Air Jordan",
-                          style: TextStyle(fontSize: 15),
+                          'Nike Air Jordan',
+                          style: TextStyle(fontSize: Dimension.msmall),
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 168),
+                        margin:  EdgeInsets.only(left: 120.sp),
                         child: IconButton(
                             onPressed: () {},
                             icon: const Icon(
                               Icons.favorite_outline,
                               color: Colors.redAccent,
-                              size: 20,
+                              size: Dimension.mmediumsize,
                             )),
                       )
                     ],
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 190),
+                    margin: const EdgeInsets.only(top: Dimension.mxlargesize),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Row(
                           children: [
-                            Text("Review"),
-                            Text("(4.9"),
+                            Text('Review'),
+                            Text('(4.9'),
                             Icon(
                               Icons.star,
-                              size: 17,
+                              size: Dimension.xsmallSize,
                               color: Colors.orange,
                             ),
-                            Text(")")
+                            Text(')')
                           ],
                         ),
                         Container(
-                            height: 30,
-                            width: 30,
-                            margin: const EdgeInsets.only(left: 170),
+                            height: Dimension.xmmmedium,
+                            width: Dimension.xmmmedium,
+                            margin: const EdgeInsets.only(left: Dimension.mlargesize),
                             decoration: BoxDecoration(
                                 color: AppColors.brandColor,
-                                borderRadius: BorderRadius.circular(30)),
+                                borderRadius: BorderRadius.circular(Dimension.xmmmedium)),
                             child: const Icon(
                               Icons.add,
-                              size: 20,
+                              size: Dimension.mediumsize,
                               color: AppColors.lightCardColor,
                             ))
                       ],
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 215, left: 35),
-                    child: const Text("\$ 98.9"),
+                    margin: const EdgeInsets.only(top: Dimension.xmslargeSize, left: Dimension.slargeSize),
+                    child: const Text('\$ 98.9'),
                   ),
                 ],
               ),
@@ -139,17 +142,17 @@ class _MainScreenState extends State<MainScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(15.0),
+               Padding(
+                padding: EdgeInsets.all(Dimension.msmall),
                 child: Text(
-                  "New Arrivals",
-                  style: TextStyle(fontSize: 20),
+                  'New Arrivals',
+                  style: TextStyle(fontSize: Dimension.mediumsize),
                 ),
               ),
               TextButton(
                   onPressed: () {},
                   child: const Text(
-                    "view all",
+                    'view all',
                     style: TextStyle(color: AppColors.blackColor),
                   ))
             ],

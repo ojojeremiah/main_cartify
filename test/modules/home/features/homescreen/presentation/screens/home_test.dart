@@ -19,10 +19,10 @@ void main() {
     // 🔹 Initial: shimmer should be visible
     expect(find.byType(Shimmer), findsOneWidget);
     expect(find.byType(Brands), findsOneWidget); // shimmer wraps Brands
-    expect(find.text("Brands"), findsOneWidget);
-    expect(find.text("Popular Shoes"), findsOneWidget);
-    expect(find.text("Nike Air Jordan"), findsOneWidget);
-    expect(find.text("New Arrivals"), findsOneWidget);
+    expect(find.text('Brands'), findsOneWidget);
+    expect(find.text('Popular Shoes'), findsOneWidget);
+    expect(find.text('Nike Air Jordan'), findsOneWidget);
+    expect(find.text('New Arrivals'), findsOneWidget);
 
     // 🔹 Advance time by 3 seconds (duration in initState)
     await tester.pump(const Duration(milliseconds: 3000));

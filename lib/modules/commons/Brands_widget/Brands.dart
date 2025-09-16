@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class Brands extends StatefulWidget {
@@ -25,8 +26,8 @@ class _BrandsState extends State<Brands> {
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: const EdgeInsets.only(
-          left: 20,
-          top: 10,
+          left: Dimension.mediumsize,
+          top: Dimension.small,
         ),
         child: Row(
           children: [
@@ -36,14 +37,14 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: selected ? Alignment.topLeft : Alignment.centerLeft,
-                width: selected ? 55 : 130,
-                height: selected ? 50 : 60,
+                width: selected ? Dimension.smlargeSize : Dimension.msslargeSize,
+                height: selected ? Dimension.smmlargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color: selected
                         ? AppColors.lightCardColor
                         : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -54,21 +55,21 @@ class _BrandsState extends State<Brands> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 5),
+                        margin: const EdgeInsets.only(left: Dimension.xxssmallest),
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: SvgPicture.asset(
-                          "assets/svg/adidas.svg",
-                          width: selected ? 50 : 45,
+                          'assets/svg/adidas.svg',
+                          width: selected ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
                         ),
                       ),
                       Text(
                         overflow: TextOverflow.clip,
-                        selected ? "" : "Addidas",
+                        selected ? '' : 'Addidas',
                         style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: 15),
+                            color: AppColors.lightCardColor, fontSize: Dimension.msmall),
                       )
                     ],
                   ),
@@ -81,13 +82,13 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: puma ? Alignment.topLeft : Alignment.centerLeft,
-                width: puma ? 55 : 130,
-                height: puma ? 50 : 60,
+                width: puma ? Dimension.smlargeSize : Dimension.msslargeSize,
+                height: puma ? Dimension.smmlargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color:
                         puma ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -98,21 +99,21 @@ class _BrandsState extends State<Brands> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 2),
+                        margin: const EdgeInsets.only(left: 3),
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: SvgPicture.asset(
-                          "assets/svg/puma.svg",
-                          width: puma ? 50 : 45,
+                          'assets/svg/puma.svg',
+                          width: puma ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
                         ),
                       ),
                       Text(
                         overflow: TextOverflow.clip,
-                        puma ? "" : "Puma",
+                        puma ? '' : 'Puma',
                         style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: 17),
+                            color: AppColors.lightCardColor, fontSize: Dimension.xsmallSize),
                       )
                     ],
                   ),
@@ -125,13 +126,13 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: nike ? Alignment.topLeft : Alignment.centerLeft,
-                width: nike ? 60 : 130,
-                height: nike ? 55 : 60,
+                width: nike ? Dimension.mssslargeSize : Dimension.msslargeSize,
+                height: nike ? Dimension.smlargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color:
                         nike ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -146,17 +147,17 @@ class _BrandsState extends State<Brands> {
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: SvgPicture.asset(
-                          "assets/svg/nike-logo.svg",
-                          width: nike ? 55 : 47,
+                          'assets/svg/nike-logo.svg',
+                          width: nike ? Dimension.smlargeSize : 47,
                         ),
                       ),
                       Text(
                         overflow: TextOverflow.clip,
-                        nike ? "" : "Nike",
+                        nike ? '' : 'Nike',
                         style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: 17),
+                            color: AppColors.lightCardColor, fontSize: Dimension.xsmallSize),
                       )
                     ],
                   ),
@@ -169,14 +170,14 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: jordan ? Alignment.topLeft : Alignment.centerLeft,
-                width: jordan ? 72 : 135,
-                height: jordan ? 60 : 60,
+                width: jordan ? 73 : Dimension.msslargeSize,
+                height: jordan ? Dimension.mssslargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color: jordan
                         ? AppColors.lightCardColor
                         : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -190,22 +191,22 @@ class _BrandsState extends State<Brands> {
                         margin: jordan
                             ? const EdgeInsets.only(left: 0, right: 0)
                             : const EdgeInsets.only(
-                                left: 10, right: 10, top: 10, bottom: 10),
+                                left: Dimension.small, right: Dimension.small, top: Dimension.small, bottom: Dimension.small),
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(Dimension.ssmallestSize),
                           child: SvgPicture.asset(
-                            "assets/svg/jordan.svg",
-                            width: jordan ? 55 : 30,
+                            'assets/svg/jordan.svg',
+                            width: jordan ? Dimension.smlargeSize : Dimension.xmmmedium,
                           ),
                         ),
                       ),
                       Text(
                         overflow: TextOverflow.clip,
-                        jordan ? "" : " Jordans ",
+                        jordan ? '' : ' Jordans ',
                         style: const TextStyle(color: AppColors.lightCardColor),
                       )
                     ],
@@ -219,13 +220,13 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: louis ? Alignment.topLeft : Alignment.centerLeft,
-                width: louis ? 55 : 154,
-                height: louis ? 50 : 60,
+                width: louis ? Dimension.smlargeSize : Dimension.msmall,
+                height: louis ? Dimension.smmlargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color:
                         louis ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -236,25 +237,25 @@ class _BrandsState extends State<Brands> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 45,
-                        width: 50,
-                        margin: const EdgeInsets.only(left: 5),
+                        height: Dimension.ssmlargeSize,
+                        width: Dimension.smmlargeSize,
+                        margin: const EdgeInsets.only(left: Dimension.xxssmallest),
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(Dimension.ssmallestSize),
                           child: SvgPicture.asset(
-                            "assets/svg/louis-vuitton.svg",
-                            height: 20,
-                            width: louis ? 50 : 45,
+                            'assets/svg/louis-vuitton.svg',
+                            height: Dimension.mediumsize,
+                            width: louis ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
                           ),
                         ),
                       ),
                       Text(
                         overflow: TextOverflow.clip,
-                        louis ? "" : " Louis Vuitton ",
+                        louis ? '' : ' Louis Vuitton ',
                         style: const TextStyle(color: AppColors.lightCardColor),
                       )
                     ],
@@ -268,13 +269,13 @@ class _BrandsState extends State<Brands> {
               curve: Curves.fastOutSlowIn,
               child: Container(
                 alignment: fila ? Alignment.topLeft : Alignment.centerLeft,
-                width: fila ? 50 : 130,
-                height: fila ? 50 : 60,
+                width: fila ? Dimension.smmlargeSize : Dimension.msslargeSize,
+                height: fila ? Dimension.smmlargeSize : Dimension.mssslargeSize,
                 decoration: BoxDecoration(
                     color:
                         fila ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(30))),
-                margin: const EdgeInsets.only(right: 20),
+                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
+                margin: const EdgeInsets.only(right: Dimension.mediumsize),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -285,26 +286,26 @@ class _BrandsState extends State<Brands> {
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: Dimension.smmlargeSize,
+                        width: Dimension.smmlargeSize,
                         margin: fila
                             ? const EdgeInsets.only(left: 0, right: 0)
-                            : const EdgeInsets.only(left: 10, right: 10),
+                            : const EdgeInsets.only(left: Dimension.small, right: Dimension.small),
                         decoration: const BoxDecoration(
                             color: AppColors.lightCardColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 5, right: 5),
+                          padding: const EdgeInsets.only(left: Dimension.xxssmallest, right: Dimension.xxssmallest),
                           child: SvgPicture.asset(
-                            "assets/svg/fila.svg",
-                            width: fila ? 60 : 55,
+                            'assets/svg/fila.svg',
+                            width: fila ? Dimension.mssslargeSize : Dimension.smlargeSize,
                           ),
                         ),
                       ),
                       Text(
                         // overflow: TextOverflow.clip,
-                        fila ? "" : "Fila",
+                        fila ? '' : 'Fila',
                         style: const TextStyle(color: AppColors.lightCardColor),
                       )
                     ],

@@ -15,8 +15,6 @@ class AppThemes {
     splashColor: AppColors.lightSplashColor,
     highlightColor: AppColors.lightSplashColor,
     disabledColor: AppColors.lightSplashColor,
-    dialogBackgroundColor: AppColors.whiteColor,
-    indicatorColor: AppColors.primaryColor,
     hintColor: AppColors.lightThemeTextColor,
 
     /// ✅ Text Theme
@@ -89,24 +87,24 @@ class AppThemes {
 
     /// ✅ Checkbox / Radio / Switch
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
-      trackColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor.withOpacity(0.5);
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor.withOpacity(0.5);
         return null;
       }),
     ),
@@ -115,9 +113,9 @@ class AppThemes {
 
     /// ✅ Color Scheme
     colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green).copyWith(
-      background: AppColors.primaryColor,
+      surface: AppColors.primaryColor,
       error: AppColors.errorColor,
-    ),
+    ), dialogTheme: DialogThemeData(backgroundColor: AppColors.whiteColor),
   );
 
   /// ✅ Dark Theme
@@ -131,8 +129,6 @@ class AppThemes {
     splashColor: AppColors.darkSplashColor,
     highlightColor: AppColors.darkSplashColor,
     disabledColor: AppColors.darkSplashColor,
-    dialogBackgroundColor: AppColors.darkScaffoldColor,
-    indicatorColor: AppColors.primaryColor,
     hintColor: AppColors.darkThemeTextColor,
 
     /// ✅ Text Theme
@@ -207,24 +203,24 @@ class AppThemes {
 
     /// ✅ Checkbox / Radio / Switch
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
     ),
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      fillColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
     ),
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor;
+      thumbColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
         return null;
       }),
-      trackColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) return AppColors.primaryColor.withOpacity(0.5);
+      trackColor: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) return AppColors.primaryColor.withOpacity(0.5);
         return null;
       }),
     ),
@@ -235,8 +231,8 @@ class AppThemes {
     colorScheme: ColorScheme.fromSwatch(
       primarySwatch: Colors.grey,
     ).copyWith(
-      background: AppColors.primaryColor,
+      surface: AppColors.primaryColor,
       error: AppColors.errorColor,
-    ),
+    ), dialogTheme: DialogThemeData(backgroundColor: AppColors.darkScaffoldColor),
   );
 }

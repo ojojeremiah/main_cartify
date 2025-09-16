@@ -121,7 +121,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       );
                     },
                     child: const Text(
-                      "Get Started",
+                      'Get Started',
                       style: TextStyle(color: AppColors.whiteColor),
                     ),
                   ),
