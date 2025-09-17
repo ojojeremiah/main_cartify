@@ -83,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
                       Container(
                         margin: const EdgeInsets.only(top: Dimension.small, left: Dimension.xmmLarge),
                         child: const Text(
-                          'Nike Air Jordan',
+                          'Nike air Jordan',
                           style: TextStyle(fontSize: Dimension.msmall),
                         ),
                       ),
