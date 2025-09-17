@@ -37,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: EdgeInsets.all(Dimension.small),
             child: Text(
               'Brands',
-              style: TextStyle(fontSize: Dimension.mmediumsize),
+              style: TextStyle(fontSize: Dimension.xmsmallSize),
             ),
           ),
           isLoading
@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: EdgeInsets.all(Dimension.small),
             child: Text(
               'Popular Shoes',
-              style: TextStyle(fontSize: Dimension.mediumsize),
+              style: TextStyle(fontSize: Dimension.xmsmallSize),
             ),
           ),
           Padding(
@@ -146,7 +146,7 @@ class _MainScreenState extends State<MainScreen> {
                 padding: EdgeInsets.all(Dimension.msmall),
                 child: Text(
                   'New Arrivals',
-                  style: TextStyle(fontSize: Dimension.mediumsize),
+                  style: TextStyle(fontSize: Dimension.xmsmallSize),
                 ),
               ),
               TextButton(
