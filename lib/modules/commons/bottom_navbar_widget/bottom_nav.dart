@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
-import 'package:main_cartify/modules/commons/appBars_widgets/mainscreen.dart';
+import 'package:main_cartify/modules/commons/appBars_widgets/home_screen.dart';
 import 'package:main_cartify/modules/home/features/homescreen/presentation/screens/home.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
