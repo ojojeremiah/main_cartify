@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
-import 'package:main_cartify/modules/commons/appBars_widgets/MainScreen.dart';
+import 'package:main_cartify/modules/commons/appBars_widgets/mainscreen.dart';
 import 'package:main_cartify/modules/home/features/homescreen/presentation/screens/home.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
@@ -66,7 +66,7 @@ class _BottomNavState extends State<BottomNav> {
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
           child: SizedBox(
-            height: 60,
+            height: Dimension.mssslargeSize,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -74,7 +74,7 @@ class _BottomNavState extends State<BottomNav> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     MaterialButton(
-                      minWidth: 10,
+                      minWidth: Dimension.small,
                       onPressed: () {
                         setState(() {
                           currentScreen = const MainScreen();

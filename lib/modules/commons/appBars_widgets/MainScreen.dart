@@ -66,7 +66,7 @@ class Appbar extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(Dimension.small))),
               child: SvgPicture.asset(
                 'assets/svg/filter.svg',
-                width: 15,
+                width: Dimension.msmall,
               )),
         )
       ],
