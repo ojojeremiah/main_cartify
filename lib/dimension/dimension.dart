@@ -17,6 +17,7 @@ class Dimension {
   static const largeSize = 34.0;
   static const slargeSize = 35.0;
   static const ssmlargeSize = 45.0;
+  static const ssmmlargeSize = 47.0;
   static const smmlargeSize = 50.0;
   static const smlargeSize = 55.0;
   static const mssslargeSize = 60.0;

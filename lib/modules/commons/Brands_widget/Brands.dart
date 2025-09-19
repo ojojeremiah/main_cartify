@@ -150,7 +150,7 @@ class _BrandsState extends State<Brands> {
                                 BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
                         child: SvgPicture.asset(
                           'assets/svg/nike-logo.svg',
-                          width: nike ? Dimension.smlargeSize : 47,
+                          width: nike ? Dimension.smlargeSize : Dimension.ssmmlargeSize,
                         ),
                       ),
                       Text(

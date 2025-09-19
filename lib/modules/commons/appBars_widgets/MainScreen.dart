@@ -12,7 +12,7 @@ class Appbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchBarSize = MediaQuery.sizeOf(context).width;
+    // final searchBarSize = MediaQuery.sizeOf(context).width;
     return Row(
       children: [
         Container(
