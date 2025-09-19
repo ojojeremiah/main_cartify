@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main_cartify/dimension/dimension.dart';
-import 'package:main_cartify/modules/commons/Brands_widget/brands.dart';
+import 'package:main_cartify/modules/commons/brands_widget/brands.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
