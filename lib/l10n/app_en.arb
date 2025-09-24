@@ -1,0 +1,6 @@
+{
+  "searchHere": "Search here",
+  "@searchHere": {
+    "description": "Hint text in the search bar"
+  }
+}

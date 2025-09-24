@@ -20,9 +20,9 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = MediaQuery.sizeOf(context).width / 26;
-    double inputBarLength = MediaQuery.sizeOf(context).width / 70;
-    double emailAndPasswordIconSize = MediaQuery.sizeOf(context).width / 16;
+    final double fontSize = MediaQuery.sizeOf(context).width / 26;
+    final double inputBarLength = MediaQuery.sizeOf(context).width / 70;
+    final double emailAndPasswordIconSize = MediaQuery.sizeOf(context).width / 16;
 
     // final userNotifier = context.watch<UserNotifier>();
 
@@ -37,7 +37,7 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   children: [
                     const Text(
-                      "Create an Account",
+                      'Create an Account',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -50,7 +50,7 @@ class _SignupState extends State<Signup> {
                               size: emailAndPasswordIconSize),
                           Container(
                               margin: const EdgeInsets.only(left: 10),
-                              child: Text("Email",
+                              child: Text('Email',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: fontSize)))
@@ -66,7 +66,7 @@ class _SignupState extends State<Signup> {
                         key: const Key('emailField'),
                         controller: _email,
                         validator: (v) =>
-                            v!.isEmpty ? "Email Required" : null,
+                            v!.isEmpty ? 'Email Required' : null,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(10),
                           hintText: 'user@gmail.com',
@@ -88,7 +88,7 @@ class _SignupState extends State<Signup> {
                           Container(
                               margin: const EdgeInsets.only(left: 10),
                               child: Text(
-                                "Password",
+                                'Password',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: fontSize),
@@ -107,7 +107,7 @@ class _SignupState extends State<Signup> {
                             key: const Key('passwordField'),
                             controller: _password,
                             validator: (v) =>
-                                v!.isEmpty ? "Password Required" : null,
+                                v!.isEmpty ? 'Password Required' : null,
                             obscureText: _confirmVisible,
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(10),
@@ -168,7 +168,7 @@ class _SignupState extends State<Signup> {
 
                             },
                         child: const Text(
-                                "Sign up",
+                                'Sign up',
                                 style: TextStyle(
                                     color: AppColors.whiteColor, fontSize: 18),
                               ),
@@ -178,7 +178,7 @@ class _SignupState extends State<Signup> {
                       padding: EdgeInsets.all(8.0),
                       child: Center(
                           child: Text(
-                        "Or Continue with",
+                        'Or Continue with',
                         style: TextStyle(fontSize: 18),
                       )),
                     ),
@@ -200,7 +200,7 @@ class _SignupState extends State<Signup> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/facebook.svg")),
+                                    'assets/svg/facebook.svg')),
                           ),
                           Container(
                             width: 60,
@@ -215,7 +215,7 @@ class _SignupState extends State<Signup> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/google.svg")),
+                                    'assets/svg/google.svg')),
                           ),
                           Container(
                             width: 60,
@@ -230,7 +230,7 @@ class _SignupState extends State<Signup> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: SvgPicture.asset(
-                                    "assets/svg/apple.svg")),
+                                    'assets/svg/apple.svg')),
                           ),
                         ],
                       ),
@@ -250,7 +250,7 @@ class _SignupState extends State<Signup> {
   );
                               },
                               child: const Text(
-                                "Login",
+                                'Login',
                                 style: TextStyle(color: AppColors.brandColor),
                               ))
                         ],
