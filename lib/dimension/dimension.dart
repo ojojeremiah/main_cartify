@@ -12,6 +12,7 @@ class Dimension {
   static const xsmallSize = 17.0;
   static const xmsmallSize = 18.0;
   static const mediumsize = 20.0;
+  static const msmediumsize = 22.0;
   static const mmediumsize = 25.0;
   static const xmmmedium = 30.0;
   static const largeSize = 34.0;
@@ -23,6 +24,8 @@ class Dimension {
   static const mssslargeSize = 60.0;
   static const mslargeSize = 75.0;
   static const mmslargeSize = 80.0;
+  static const msssslargeSize = 90.0;
+  static const mmsslargeSize = 100.0;
   static const msslargeSize = 130.0; 
   static const mlargesize = 170.0;
   static const mxlargesize = 190.0;
@@ -30,5 +33,9 @@ class Dimension {
   static const xmslargeSize = 215.0;
   static const xmmlargesize = 250.0;
   static const xmmlargeSize = 290.0;
+  static const xslargeSize = 300.0;
+  static const xlargeSize = 330.0;
   static const xxlargeSize = 340.0;
+  static const xxslargeSize = 350.0;
+  static const xxxmlargeSize = 380.0;
 }
