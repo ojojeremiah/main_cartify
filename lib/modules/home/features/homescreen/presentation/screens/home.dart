@@ -5,7 +5,6 @@ import 'package:main_cartify/modules/commons/brands_widget/brand.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
-
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
   @override
@@ -45,7 +44,8 @@ class _MainScreenState extends State<MainScreen> {
               : Shimmer.fromColors(
                   baseColor: Colors.grey.shade300,
                   highlightColor: Colors.white,
-                  child: const Brands()),
+                  child: const Brands(),
+                ),
           const Padding(
             padding: EdgeInsets.all(Dimension.small),
             child: Text(
@@ -54,11 +54,14 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.all(Dimension.mediumsize),
+            padding: EdgeInsets.all(Dimension.mediumsize),
             child: Container(
               decoration: const BoxDecoration(
-                  color: AppColors.lightCardColor,
-                  borderRadius: BorderRadius.all(Radius.circular(Dimension.msmall))),
+                color: AppColors.lightCardColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(Dimension.msmall),
+                ),
+              ),
               // margin: EdgeInsets.only(
               //     left: MediaQuery.sizeOf(context).width / 30,
               //     right: MediaQuery.sizeOf(context).width / 30),
@@ -69,34 +72,43 @@ class _MainScreenState extends State<MainScreen> {
                   Container(
                     height: Dimension.mlargesize,
                     width: Dimension.xxlargeSize,
-                    margin: const EdgeInsets.only(left: Dimension.xmmmedium, top: Dimension.small, right: Dimension.xmmmedium),
+                    margin: const EdgeInsets.only(
+                      left: Dimension.xmmmedium,
+                      top: Dimension.small,
+                      right: Dimension.xmmmedium,
+                    ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimension.small),
-                        image: const DecorationImage(
-                          image: AssetImage('assets/images/beautiful-nike.jpg'),
-                          fit: BoxFit.cover,
-                        )),
+                      borderRadius: BorderRadius.circular(Dimension.small),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/beautiful-nike.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                   Row(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: Dimension.small, left: Dimension.xmmLarge),
+                        margin: const EdgeInsets.only(
+                          top: Dimension.small,
+                          left: Dimension.xmmLarge,
+                        ),
                         child: const Text(
                           'Nike air Jordan',
                           style: TextStyle(fontSize: Dimension.msmall),
                         ),
                       ),
                       Container(
-                        margin:  EdgeInsets.only(left: 120.sp),
+                        margin: EdgeInsets.only(left: 120.sp),
                         child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.favorite_outline,
-                              color: Colors.redAccent,
-                              size: Dimension.mmediumsize,
-                            )),
-                      )
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.favorite_outline,
+                            color: Colors.redAccent,
+                            size: Dimension.mmediumsize,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   Container(
@@ -113,26 +125,35 @@ class _MainScreenState extends State<MainScreen> {
                               size: Dimension.xsmallSize,
                               color: Colors.orange,
                             ),
-                            Text(')')
+                            Text(')'),
                           ],
                         ),
                         Container(
-                            height: Dimension.xmmmedium,
-                            width: Dimension.xmmmedium,
-                            margin: const EdgeInsets.only(left: Dimension.mlargesize),
-                            decoration: BoxDecoration(
-                                color: AppColors.brandColor,
-                                borderRadius: BorderRadius.circular(Dimension.xmmmedium)),
-                            child: const Icon(
-                              Icons.add,
-                              size: Dimension.mediumsize,
-                              color: AppColors.lightCardColor,
-                            ))
+                          height: Dimension.xmmmedium,
+                          width: Dimension.xmmmedium,
+                          margin: const EdgeInsets.only(
+                            left: Dimension.mlargesize,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.brandColor,
+                            borderRadius: BorderRadius.circular(
+                              Dimension.xmmmedium,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.add,
+                            size: Dimension.mediumsize,
+                            color: AppColors.lightCardColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: Dimension.xmslargeSize, left: Dimension.slargeSize),
+                    margin: const EdgeInsets.only(
+                      top: Dimension.xmslargeSize,
+                      left: Dimension.slargeSize,
+                    ),
                     child: const Text('\$ 98.9'),
                   ),
                 ],
@@ -142,7 +163,7 @@ class _MainScreenState extends State<MainScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Padding(
+              Padding(
                 padding: EdgeInsets.all(Dimension.msmall),
                 child: Text(
                   'New Arrivals',
@@ -150,11 +171,12 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'view all',
-                    style: TextStyle(color: AppColors.blackColor),
-                  ))
+                onPressed: () {},
+                child: const Text(
+                  'view all',
+                  style: TextStyle(color: AppColors.blackColor),
+                ),
+              ),
             ],
           ),
         ],
@@ -162,4 +184,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
