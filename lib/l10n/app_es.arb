@@ -1,4 +1,11 @@
 {
+  "details": "Detalles",
+  "@details": {
+    "description": "Label for the details section or button"
+  },
+
   "searchHere": "Buscar aquí",
-  "welcomeMessage": "¡Hola, bienvenido a mi aplicación!"
+  "@searchHere": {
+    "description": "Hint text in the search bar"
+  }
 }

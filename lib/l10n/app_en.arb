@@ -1,4 +1,9 @@
 {
+  "details": "Details",
+  "@details": {
+    "description": "Label for the details section or button"
+  },
+
   "searchHere": "Search here",
   "@searchHere": {
     "description": "Hint text in the search bar"
