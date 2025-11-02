@@ -77,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                       left: Dimension.msmall,
                       top: Dimension.small,
                       right: Dimension.small,
-                      bottom:  Dimension.small,
+                      bottom: Dimension.small,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimension.small),
@@ -101,7 +101,9 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: Dimension.mxsslargeSize.sp),
+                        margin: EdgeInsets.only(
+                          left: Dimension.mxsslargeSize.sp,
+                        ),
                         child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -181,7 +183,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ],
           ),
-          const AllProducts()
+          const AllProducts(),
         ],
       ),
     );
