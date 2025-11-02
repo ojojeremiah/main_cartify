@@ -46,7 +46,9 @@ class _AllProductsState extends State<AllProducts> {
                 Container(
                   decoration: const BoxDecoration(
                     color: AppColors.lightCardColor,
-                    borderRadius: BorderRadius.all(Radius.circular(Dimension.msmall)),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(Dimension.msmall),
+                    ),
                   ),
                   margin: const EdgeInsets.only(left: Dimension.small),
                   height: Dimension.xxslargeSize,
@@ -55,7 +57,10 @@ class _AllProductsState extends State<AllProducts> {
                 Container(
                   height: Dimension.msssslargeSize,
                   width: Dimension.mmmsslargeSize,
-                  margin: const EdgeInsets.only(left: Dimension.mediumsize, top: Dimension.small),
+                  margin: const EdgeInsets.only(
+                    left: Dimension.mediumsize,
+                    top: Dimension.small,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimension.small),
                     image: DecorationImage(
@@ -81,7 +86,7 @@ class _AllProductsState extends State<AllProducts> {
                   ),
                 ),
                 Positioned(
-                  top: Dimension.mmssslargeSize ,
+                  top: Dimension.mmssslargeSize,
                   left: Dimension.mediumsize,
                   right: Dimension.mediumsize,
                   child: Text(
@@ -100,7 +105,11 @@ class _AllProductsState extends State<AllProducts> {
                   child: Row(
                     children: [
                       Text('Review (${item.rating?.rate ?? 0})'),
-                      const Icon(Icons.star, size: Dimension.xsmallSize, color: Colors.orange),
+                      const Icon(
+                        Icons.star,
+                        size: Dimension.xsmallSize,
+                        color: Colors.orange,
+                      ),
                       const Text(")"),
                     ],
                   ),
@@ -115,7 +124,9 @@ class _AllProductsState extends State<AllProducts> {
                     icon: Container(
                       decoration: BoxDecoration(
                         color: AppColors.brandColor,
-                        borderRadius: BorderRadius.circular(Dimension.mediumsize),
+                        borderRadius: BorderRadius.circular(
+                          Dimension.mediumsize,
+                        ),
                       ),
                       child: const Icon(
                         Icons.add,
@@ -125,7 +136,11 @@ class _AllProductsState extends State<AllProducts> {
                     ),
                   ),
                 ),
-                Positioned(top: Dimension.mxsslargeSize, left: Dimension.mediumsize, child: Text("\$ ${item.price}")),
+                Positioned(
+                  top: Dimension.mxsslargeSize,
+                  left: Dimension.mediumsize,
+                  child: Text("\$ ${item.price}"),
+                ),
               ],
             ),
           );
