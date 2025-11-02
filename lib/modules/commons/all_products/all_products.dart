@@ -64,7 +64,7 @@ class _AllProductsState extends State<AllProducts> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimension.small),
                     image: DecorationImage(
-                      image: NetworkImage(item.image ?? ""),
+                      image: NetworkImage(item.image ?? ''),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -90,7 +90,7 @@ class _AllProductsState extends State<AllProducts> {
                   left: Dimension.mediumsize,
                   right: Dimension.mediumsize,
                   child: Text(
-                    item.title ?? "",
+                    item.title ?? '',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: const TextStyle(
@@ -110,7 +110,7 @@ class _AllProductsState extends State<AllProducts> {
                         size: Dimension.xsmallSize,
                         color: Colors.orange,
                       ),
-                      const Text(")"),
+                      const Text(')'),
                     ],
                   ),
                 ),
@@ -139,7 +139,7 @@ class _AllProductsState extends State<AllProducts> {
                 Positioned(
                   top: Dimension.mxsslargeSize,
                   left: Dimension.mediumsize,
-                  child: Text("\$ ${item.price}"),
+                  child: Text('\$ ${item.price}'),
                 ),
               ],
             ),
