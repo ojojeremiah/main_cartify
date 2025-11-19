@@ -116,7 +116,7 @@ class _MainScreenState extends State<MainScreen> {
                     ],
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: Dimension.mxlargesize),
+                    margin: const EdgeInsets.only(top: Dimension.mmssslargeSize),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

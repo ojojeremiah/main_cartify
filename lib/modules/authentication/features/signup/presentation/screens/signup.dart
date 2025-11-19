@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/authentication/features/login/presentation/screens/login.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
@@ -184,7 +185,7 @@ class _SignupState extends State<Signup> {
                         'Sign up',
                         style: TextStyle(
                           color: AppColors.whiteColor,
-                          fontSize: 18,
+                          fontSize: Dimension.xsmallSize,
                         ),
                       ),
                     ),
@@ -194,7 +195,7 @@ class _SignupState extends State<Signup> {
                     child: Center(
                       child: Text(
                         'Or Continue with',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: Dimension.msmall),
                       ),
                     ),
                   ),

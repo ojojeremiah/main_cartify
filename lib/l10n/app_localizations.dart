@@ -95,6 +95,12 @@ abstract class AppLocalizations {
     Locale('es')
   ];
 
+  /// Label for the details section or button
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
   /// Hint text in the search bar
   ///
   /// In en, this message translates to:
