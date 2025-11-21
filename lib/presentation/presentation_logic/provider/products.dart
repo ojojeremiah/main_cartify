@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:main_cartify/data/service/error_message.dart';
 import 'package:main_cartify/domain/model/products.dart';
 import 'package:main_cartify/domain/use_cases/products.dart';
 
@@ -19,8 +20,10 @@ class ProductNotifier extends ChangeNotifier {
   String get successMessage => _successMessage;
   List<Products> get products => _products;
 
-  ProductNotifier(this.productUseCase, {Future<void> Function({required String msg})? toast})
-      : toastFn = toast ?? Fluttertoast.showToast;
+  ProductNotifier(
+    this.productUseCase, {
+    Future<void> Function({required String msg})? toast,
+  }) : toastFn = toast ?? Fluttertoast.showToast;
 
   void _setState({
     required ProductDataState newState,
@@ -41,8 +44,14 @@ class ProductNotifier extends ChangeNotifier {
     final errorMessage = result.$2;
 
     if (_products.isEmpty) {
-      _setState(newState: ProductDataState.error, errorMessage: errorMessage);
-      await toastFn(msg: errorMessage); // <-- uses injected function
+      debugPrint('Product fetch error: $errorMessage');
+
+      final userMessage = ErrorMessageHelper.getUserFriendlyMessage(
+        errorMessage,
+      );
+
+      _setState(newState: ProductDataState.error, errorMessage: userMessage);
+      await toastFn(msg: userMessage);
     } else {
       _setState(newState: ProductDataState.success);
     }
