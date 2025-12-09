@@ -8,10 +8,12 @@ class DioClient {
   DioClient(this._dio) {
     _dio
       ..options.baseUrl = Endpoints.baseUrl
-      ..options.connectTimeout =
-          const Duration(seconds: Endpoints.connectionTimeout)
-      ..options.receiveTimeout =
-          const Duration(seconds: Endpoints.receiveTimeout)
+      ..options.connectTimeout = const Duration(
+        seconds: Endpoints.connectionTimeout,
+      )
+      ..options.receiveTimeout = const Duration(
+        seconds: Endpoints.receiveTimeout,
+      )
       ..options.contentType = 'application/json'
       ..options.headers['Content-Type'] = 'application/json'
       ..options.responseType = ResponseType.json
@@ -19,26 +21,27 @@ class DioClient {
       ..options.validateStatus = (status) {
         return status! < 500;
       }
-      ..interceptors.add(LogInterceptor(
+      ..interceptors.add(
+        LogInterceptor(
           request: true,
           requestHeader: true,
           requestBody: true,
-          responseBody: true));
+          responseBody: true,
+        ),
+      );
   }
 
   Future<Response> get(
     String url, {
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await _dio.get(url,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onReceiveProgress: onReceiveProgress);
+      final Response response = await _dio.get(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+      );
       return response;
     } catch (e) {
       if (e is DioException) {
@@ -53,18 +56,14 @@ class DioClient {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await _dio.post(uri,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress);
+      final Response response = await _dio.post(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
       return response;
     } catch (e) {
       if (e is DioException) {
@@ -79,18 +78,14 @@ class DioClient {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await _dio.put(uri,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress);
+      final Response response = await _dio.put(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
       return response;
     } catch (e) {
       if (e is DioException) {
@@ -105,9 +100,6 @@ class DioClient {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       final Response response = await _dio.delete(
@@ -115,7 +107,6 @@ class DioClient {
         data: data,
         queryParameters: queryParameters,
         options: options,
-        cancelToken: cancelToken,
       );
       return response.data;
     } catch (e) {

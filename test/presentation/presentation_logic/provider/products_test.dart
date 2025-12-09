@@ -64,17 +64,37 @@ void main() {
       verify(() => mockUseCase.call()).called(1);
     });
 
-    test('fetchProducts sets error state when products are empty', () async {
-      const errorMsg = 'No products found';
-      when(() => mockUseCase.call()).thenAnswer((_) async => (<Products>[], errorMsg));
+    test('fetchProducts sets loading before success', () async {
+      // Arrange
+      final mockProducts = [
+        Products(
+          id: 1,
+          title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+          price: 109.95,
+          image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png',
+          rating: Rating(rate: 3.9, count: 120),
+          description: '',
+          category: '',
+          quantity: null,
+          totalprice: null,
+        ),
+      ];
+
+      when(() => mockUseCase.call()).thenAnswer((_) async => (mockProducts, ''));
+
+      // Act
+      final states = <ProductDataState>[];
+      notifier.addListener(() {
+        states.add(notifier.productState);
+      });
 
       await notifier.fetchProducts();
 
-      expect(notifier.productState, ProductDataState.error);
-      expect(notifier.errorMessage, errorMsg);
-      expect(notifier.products, isEmpty);
-      verify(() => mockUseCase.call()).called(1);
+      // Assert
+      expect(states.first, ProductDataState.loading);
+      expect(states.last, ProductDataState.success);
     });
+    
 
     test('fetchProducts sets loading before success or error', () async {
       when(() => mockUseCase.call()).thenAnswer((_) async => (<Products>[], 'error'));
