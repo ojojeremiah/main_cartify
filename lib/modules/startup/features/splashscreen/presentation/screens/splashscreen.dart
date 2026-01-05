@@ -33,103 +33,101 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: MediaQuery.sizeOf(context).height / 1.5,
-                width: double.maxFinite,
-                child: PageView.builder(
-                  controller: pageController,
-                  itemCount: screens.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Center(
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: MediaQuery.sizeOf(context).width / 3,
-                                ),
-                                child: Image.asset(screens[index].image),
+    return Scaffold(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: MediaQuery.sizeOf(context).height / 1.5,
+              width: double.maxFinite,
+              child: PageView.builder(
+                controller: pageController,
+                itemCount: screens.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Center(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: MediaQuery.sizeOf(context).width / 2,
                               ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 10),
-                                width: 290,
-                                child: Text(
-                                  screens[index].header,
-                                  style: TextStyle(
-                                    fontSize:
-                                        MediaQuery.sizeOf(context).width / 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              child: Image.asset(screens[index].image),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              width: 290,
+                              child: Text(
+                                screens[index].header,
+                                style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.sizeOf(context).width / 24,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 10),
-                                width: 300,
-                                child: Text(
-                                  screens[index].text,
-                                  style: const TextStyle(
-                                    color: AppColors.smallText,
-                                  ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              width: 300,
+                              child: Text(
+                                screens[index].text,
+                                style: const TextStyle(
+                                  color: AppColors.smallText,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+          Center(
+            child: DotsIndicator(
+              dotsCount: screens.length,
+              position: _currPageValue, // already double
+              decorator: DotsDecorator(
+                activeColor: AppColors.successColor,
+                size: const Size.square(9.0),
+                activeSize: const Size(18.0, 9.0),
+                activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Container(
+                width: 300,
+                decoration: const BoxDecoration(
+                  color: AppColors.brandColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const Signup(),
+                      ),
                     );
                   },
-                ),
-              ),
-            ),
-            Center(
-              child: DotsIndicator(
-                dotsCount: screens.length,
-                position: _currPageValue, // already double
-                decorator: DotsDecorator(
-                  activeColor: AppColors.successColor,
-                  size: const Size.square(9.0),
-                  activeSize: const Size(18.0, 9.0),
-                  activeShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
+                  child: const Text(
+                    'Get Started',
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                 ),
               ),
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: 300,
-                  decoration: const BoxDecoration(
-                    color: AppColors.brandColor,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const Signup(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'Get Started',
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

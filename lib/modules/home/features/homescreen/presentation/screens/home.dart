@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main_cartify/dimension/dimension.dart';
+import 'package:main_cartify/modules/commons/all_products/all_products.dart';
 import 'package:main_cartify/modules/commons/brands_widget/brand.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
@@ -54,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(Dimension.mediumsize),
+            padding: EdgeInsets.all(Dimension.small),
             child: Container(
               decoration: const BoxDecoration(
                 color: AppColors.lightCardColor,
@@ -65,17 +66,18 @@ class _MainScreenState extends State<MainScreen> {
               // margin: EdgeInsets.only(
               //     left: MediaQuery.sizeOf(context).width / 30,
               //     right: MediaQuery.sizeOf(context).width / 30),
-              height: Dimension.xmmLarge,
-              width: MediaQuery.sizeOf(context).width / 0.5,
+              height: Dimension.mmmsslargeSize,
+              width: MediaQuery.sizeOf(context).width * 2,
               child: Stack(
                 children: [
                   Container(
                     height: Dimension.mlargesize,
                     width: Dimension.xxlargeSize,
                     margin: const EdgeInsets.only(
-                      left: Dimension.xmmmedium,
+                      left: Dimension.msmall,
                       top: Dimension.small,
-                      right: Dimension.xmmmedium,
+                      right: Dimension.small,
+                      bottom: Dimension.small,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(Dimension.small),
@@ -99,7 +101,9 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 120.sp),
+                        margin: EdgeInsets.only(
+                          left: Dimension.mxsslargeSize.sp,
+                        ),
                         child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -179,6 +183,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ],
           ),
+          const AllProducts(),
         ],
       ),
     );
