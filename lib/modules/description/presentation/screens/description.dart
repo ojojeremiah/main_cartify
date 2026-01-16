@@ -117,7 +117,7 @@ class _DescriptionsState extends State<Descriptions> {
                           // add to cart logic
                         },
                         child: Text(
-                          context.l10n.addToCart,
+                          'Add to cart',
                           style: AppTextstyles.xsmallSizelight,
                         ),
                       ),
