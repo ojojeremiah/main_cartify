@@ -8,9 +8,9 @@ class AppTextstyles {
     fontWeight: FontWeight.bold,
   );
 
-  static TextStyle blackColorms = TextStyle(
+  static TextStyle appBarText = TextStyle(
     color: AppColors.blackColor,
-    fontSize: Dimension.msmediumsize,
+    fontSize: Dimension.xmsmallSize,
     fontWeight: FontWeight.bold,
   );
 

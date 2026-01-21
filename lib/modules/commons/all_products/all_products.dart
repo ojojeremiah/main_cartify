@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
+import 'package:main_cartify/modules/description/presentation/screens/description.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/products.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -33,13 +34,13 @@ class _AllProductsState extends State<AllProducts> {
         children: productNotifier.products.map((item) {
           return GestureDetector(
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (_) =>
-              //     // Descriptions(products: item),
-              //   )
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) =>
+                  Descriptions(products: item),
+                )
+              );
             },
             child: Stack(
               children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/authentication/features/signup/presentation/screens/signup.dart';
 import 'package:main_cartify/modules/commons/bottom_navbar_widget/bottom_nav.dart';
 import 'package:main_cartify/utils/app_colors.dart';
@@ -185,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
                         'Log In',
                         style: TextStyle(
                           color: AppColors.whiteColor,
-                          fontSize: 18,
+                          fontSize: Dimension.xsmallSize,
                         ),
                       ),
                     ),
@@ -195,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Center(
                       child: Text(
                         'Or Continue with',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: Dimension.msmall),
                       ),
                     ),
                   ),

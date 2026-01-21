@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
-import 'package:main_cartify/l10n/app_localizations.dart';
+import 'package:main_cartify/domain/model/products.dart';
 import 'package:main_cartify/modules/commons/app_textstyles/app_textstyles.dart';
 import 'package:main_cartify/utils/app_colors.dart';
+import 'package:main_cartify/utils/context_extensions.dart';
 
 class Descriptions extends StatefulWidget {
-  const Descriptions({super.key});
+  final Products products;
+  const Descriptions({super.key, required this.products});
 
   @override
   State<Descriptions> createState() => _DescriptionsState();
@@ -19,16 +21,12 @@ class _DescriptionsState extends State<Descriptions> {
         leading: const BackButton(color: AppColors.blackColor),
         elevation: 0,
         backgroundColor: Colors.grey[100],
-        title: Container(
-          margin: const EdgeInsets.only(left: Dimension.mmsslargeSize),
-          child: Text(
-            AppLocalizations.of(context)!.searchHere,
-            style: AppTextstyles.blackColorms
-          ),
+        title: Text(
+          context.l10n.details,
+          style: AppTextstyles.appBarText,
         ),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,10 +35,10 @@ class _DescriptionsState extends State<Descriptions> {
               child: Container(
                 margin: const EdgeInsets.only(
                   top: Dimension.xmmmedium,
-                  left: Dimension.msssslargeSize,
+                  left: Dimension.mslargeSize,
                 ),
                 height: Dimension.xslargeSize,
-                child: Image.network(''),
+                child: Image.network(widget.products.image!),
               ),
             ),
             Container(
@@ -59,73 +57,55 @@ class _DescriptionsState extends State<Descriptions> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: Dimension.mediumsize),
-                      child: Text(
-                        '',
-                        // overflow: TextOverflow.ellipsis,
-                        // maxLines: 2,
-                        // widget.products.title!,
-                        // style: const TextStyle(
-                        //   fontWeight: FontWeight.bold,
-                        // ),
-                      ),
+                    Text(
+                      widget.products.title!,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: Dimension.mediumsize),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '',
-                            // '\$ ${widget.products.price}',
-                            style: AppTextstyles.xsmallSize
+                    const SizedBox(height: Dimension.mediumsize),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '\$ ${widget.products.price}',
+                          style: AppTextstyles.xsmallSize,
+                        ),
+                        Text(
+                          '(${widget.products.rating!.count} reviews)',
+                          style: TextStyle(
+                            fontSize: Dimension.msmall,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[500],
                           ),
-                          Text(
-                            '',
-                            // '(${widget.products.rating!.count!} reviews )',
-                            style: TextStyle(
-                              fontSize: Dimension.msmall,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(left: Dimension.xlargeSize),
-                      child: Row(
-                        children: [
-                          Text(
-                            '',
-                            // "${widget.products.rating!.rate!}",
-                            style: AppTextstyles.xsmallSize
-                          ),
-                          const Icon(
-                            Icons.star_outlined,
-                            color: Colors.orange,
-                            size: Dimension.xsmallSize,
-                          ),
-                        ],
-                      ),
+                    const SizedBox(height: Dimension.small),
+                    Row(
+                      children: [
+                        Text(
+                          '${widget.products.rating!.rate}',
+                          style: AppTextstyles.xsmallSize,
+                        ),
+                        const Icon(
+                          Icons.star_outlined,
+                          color: Colors.orange,
+                          size: Dimension.xsmallSize,
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: Dimension.mediumsize),
-                      child: Text(
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 5,
-                        '',
-                        // widget.products.description!,
-                        style: AppTextstyles.colorgrey
-                      ),
+                    const SizedBox(height: Dimension.mediumsize),
+                    Text(
+                      widget.products.description!,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                      style: AppTextstyles.colorgrey,
                     ),
+                    const SizedBox(height: Dimension.xmmmedium),
                     Container(
                       width: Dimension.xxslargeSize,
-                      margin: const EdgeInsets.only(
-                        top: Dimension.xmmmedium,
-                        left: Dimension.msmall,
-                      ),
+                      margin: const EdgeInsets.only(left: Dimension.msmall),
                       decoration: const BoxDecoration(
                         color: AppColors.brandColor,
                         borderRadius: BorderRadius.all(
@@ -134,12 +114,11 @@ class _DescriptionsState extends State<Descriptions> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          // widget.productController
-                          //     .updateProducts(widget.products);
+                          // add to cart logic
                         },
                         child: Text(
-                          'Add to Cart',
-                          style: AppTextstyles.xsmallSizelight
+                          'Add to cart',
+                          style: AppTextstyles.xsmallSizelight,
                         ),
                       ),
                     ),

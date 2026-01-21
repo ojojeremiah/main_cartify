@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class Brands extends StatefulWidget {
-  const Brands({
-    super.key,
-  });
+  const Brands({super.key});
 
   @override
   State<Brands> createState() => _BrandsState();
 }
 
 class _BrandsState extends State<Brands> {
-  bool selected = true;
-  bool puma = true;
-  bool nike = true;
-  bool jordan = true;
-  bool louis = true;
-  bool fila = true;
+  final Map<String, bool> _brandState = {
+    'adidas': true,
+    'puma': true,
+    'nike': true,
+    'jordan': true,
+    'louis': true,
+    'fila': true,
+  };
+
+  void _toggle(String key) {
+    setState(() {
+      _brandState[key] = !_brandState[key]!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,289 +37,114 @@ class _BrandsState extends State<Brands> {
         ),
         child: Row(
           children: [
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: selected ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: selected ? Alignment.topLeft : Alignment.centerLeft,
-                width: selected ? Dimension.smlargeSize : Dimension.msslargeSize,
-                height: selected ? Dimension.smmlargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color: selected
-                        ? AppColors.lightCardColor
-                        : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selected = !selected;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: Dimension.xxssmallest),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: SvgPicture.asset(
-                          'assets/svg/adidas.svg',
-                          width: selected ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.clip,
-                        selected ? '' : 'Addidas',
-                        style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: Dimension.msmall),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/adidas.svg",
+              label: "Adidas",
+              expanded: !_brandState['adidas']!,
+              onTap: () => _toggle('adidas'),
             ),
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: puma ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: puma ? Alignment.topLeft : Alignment.centerLeft,
-                width: puma ? Dimension.smlargeSize : Dimension.msslargeSize,
-                height: puma ? Dimension.smmlargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color:
-                        puma ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      puma = !puma;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 3),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: SvgPicture.asset(
-                          'assets/svg/puma.svg',
-                          width: puma ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.clip,
-                        puma ? '' : 'Puma',
-                        style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: Dimension.xsmallSize),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/puma.svg",
+              label: "Puma",
+              expanded: !_brandState['puma']!,
+              onTap: () => _toggle('puma'),
             ),
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: nike ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: nike ? Alignment.topLeft : Alignment.centerLeft,
-                width: nike ? Dimension.mssslargeSize : Dimension.msslargeSize,
-                height: nike ? Dimension.smlargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color:
-                        nike ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      nike = !nike;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(left: 1),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: SvgPicture.asset(
-                          'assets/svg/nike-logo.svg',
-                          width: nike ? Dimension.smlargeSize : Dimension.ssmmlargeSize,
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.clip,
-                        nike ? '' : 'Nike',
-                        style: const TextStyle(
-                            color: AppColors.lightCardColor, fontSize: Dimension.xsmallSize),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/nike-logo.svg",
+              label: "Nike",
+              expanded: !_brandState['nike']!,
+              onTap: () => _toggle('nike'),
             ),
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: jordan ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: jordan ? Alignment.topLeft : Alignment.centerLeft,
-                width: jordan ? 73 : Dimension.msslargeSize,
-                height: jordan ? Dimension.mssslargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color: jordan
-                        ? AppColors.lightCardColor
-                        : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      jordan = !jordan;
-                    });
-                  },
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        margin: jordan
-                            ? const EdgeInsets.only(left: 0, right: 0)
-                            : const EdgeInsets.only(
-                                left: Dimension.small, right: Dimension.small, top: Dimension.small, bottom: Dimension.small),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(Dimension.ssmallestSize),
-                          child: SvgPicture.asset(
-                            'assets/svg/jordan.svg',
-                            width: jordan ? Dimension.smlargeSize : Dimension.xmmmedium,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.clip,
-                        jordan ? '' : ' Jordans ',
-                        style: const TextStyle(color: AppColors.lightCardColor),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/jordan.svg",
+              label: "Jordans",
+              expanded: !_brandState['jordan']!,
+              onTap: () => _toggle('jordan'),
             ),
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: louis ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: louis ? Alignment.topLeft : Alignment.centerLeft,
-                width: louis ? Dimension.smlargeSize : Dimension.msmall,
-                height: louis ? Dimension.smmlargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color:
-                        louis ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      louis = !louis;
-                    });
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        height: Dimension.ssmlargeSize,
-                        width: Dimension.smmlargeSize,
-                        margin: const EdgeInsets.only(left: Dimension.xxssmallest),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: Padding(
-                          padding: const EdgeInsets.all(Dimension.ssmallestSize),
-                          child: SvgPicture.asset(
-                            'assets/svg/louis-vuitton.svg',
-                            height: Dimension.mediumsize,
-                            width: louis ? Dimension.smmlargeSize : Dimension.ssmlargeSize,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        overflow: TextOverflow.clip,
-                        louis ? '' : ' Louis Vuitton ',
-                        style: const TextStyle(color: AppColors.lightCardColor),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/louis-vuitton.svg",
+              label: "Louis Vuitton",
+              expanded: !_brandState['louis']!,
+              onTap: () => _toggle('louis'),
             ),
-            AnimatedSize(
-              duration: const Duration(seconds: 1),
-              alignment: fila ? Alignment.topLeft : Alignment.centerLeft,
-              curve: Curves.fastOutSlowIn,
-              child: Container(
-                alignment: fila ? Alignment.topLeft : Alignment.centerLeft,
-                width: fila ? Dimension.smmlargeSize : Dimension.msslargeSize,
-                height: fila ? Dimension.smmlargeSize : Dimension.mssslargeSize,
-                decoration: BoxDecoration(
-                    color:
-                        fila ? AppColors.lightCardColor : AppColors.brandColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                margin: const EdgeInsets.only(right: Dimension.mediumsize),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      fila = !fila;
-                    });
-                  },
-                  child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        height: Dimension.smmlargeSize,
-                        width: Dimension.smmlargeSize,
-                        margin: fila
-                            ? const EdgeInsets.only(left: 0, right: 0)
-                            : const EdgeInsets.only(left: Dimension.small, right: Dimension.small),
-                        decoration: const BoxDecoration(
-                            color: AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(Dimension.xmmmedium))),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: Dimension.xxssmallest, right: Dimension.xxssmallest),
-                          child: SvgPicture.asset(
-                            'assets/svg/fila.svg',
-                            width: fila ? Dimension.mssslargeSize : Dimension.smlargeSize,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        // overflow: TextOverflow.clip,
-                        fila ? '' : 'Fila',
-                        style: const TextStyle(color: AppColors.lightCardColor),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+            _BrandItem(
+              logo: "assets/svg/fila.svg",
+              label: "Fila",
+              expanded: !_brandState['fila']!,
+              onTap: () => _toggle('fila'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BrandItem extends StatelessWidget {
+  final String logo;
+  final String label;
+  final bool expanded;
+  final VoidCallback onTap;
+
+  const _BrandItem({
+    required this.logo,
+    required this.label,
+    required this.expanded,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.fastOutSlowIn,
+      child: Container(
+        width: expanded ? Dimension.mxsslargeSize : Dimension.smlargeSize,
+        height: Dimension.smlargeSize,
+        margin: const EdgeInsets.only(right: Dimension.mediumsize),
+        decoration: BoxDecoration(
+          color: expanded ? AppColors.brandColor : AppColors.lightCardColor,
+          borderRadius: BorderRadius.circular(Dimension.xmmmedium),
+        ),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Row(
+            children: [
+              const SizedBox(width: Dimension.xxssmallest),
+
+              /// Fixed-size rounded icon container
+              Container(
+                height: Dimension.smmlargeSize ,
+                width: Dimension.smmlargeSize,
+                decoration: BoxDecoration(
+                  color: AppColors.lightCardColor,
+                  borderRadius: BorderRadius.circular(Dimension.xmmmedium),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(Dimension.ssmallestSize),
+                  child: SvgPicture.asset(
+                    logo,
+                    // fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+
+              if (expanded) ...[
+                const SizedBox(width: Dimension.xxssmallest),
+                Expanded(
+                  child: Text(
+                    label,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: AppColors.lightCardColor,
+                      fontSize: Dimension.mxssmall,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: Dimension.xxssmallest),
+              ],
+            ],
+          ),
         ),
       ),
     );

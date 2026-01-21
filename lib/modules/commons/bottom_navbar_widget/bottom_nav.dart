@@ -46,12 +46,7 @@ class _BottomNavState extends State<BottomNav> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: [
-            PageStorage(
-              bucket: bucket,
-              child: currentScreen,
-            ),
-          ],
+          children: [PageStorage(bucket: bucket, child: currentScreen)],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -64,63 +59,64 @@ class _BottomNavState extends State<BottomNav> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        height: Dimension.mssslargeSize,
         shape: const CircularNotchedRectangle(),
         child: SizedBox(
           height: Dimension.xmmLarge, // reduced height
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      currentTab == 0 ? Icons.home_filled : Icons.home_outlined,
-                      color: currentTab == 0 ? AppColors.brandColor : AppColors.blackColor,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = const MainScreen();
-                        currentAppbar = const Appbar();
-                        currentTab = 0;
-                      });
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.category,
-                      color: currentTab == 1 ? AppColors.brandColor : AppColors.blackColor,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      // Handle categories
-                    },
-                  ),
-                ],
+              IconButton(
+                icon: Icon(
+                  currentTab == 0 ? Icons.home_filled : Icons.home_outlined,
+                  color: currentTab == 0
+                      ? AppColors.brandColor
+                      : AppColors.blackColor,
+                  size: 24,
+                ),
+                onPressed: () {
+                  setState(() {
+                    currentScreen = const MainScreen();
+                    currentAppbar = const Appbar();
+                    currentTab = 0;
+                  });
+                },
               ),
-              Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      currentTab == 2 ? Icons.favorite : Icons.favorite_outline,
-                      color: currentTab == 2 ? AppColors.brandColor : AppColors.blackColor,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      // Handle favourites
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      currentTab == 3 ? Icons.person : Icons.person_outline,
-                      color: currentTab == 3 ? AppColors.brandColor : AppColors.blackColor,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      // Handle profile
-                    },
-                  ),
-                ],
+              IconButton(
+                icon: Icon(
+                  Icons.category,
+                  color: currentTab == 1
+                      ? AppColors.brandColor
+                      : AppColors.blackColor,
+                  size: 24,
+                ),
+                onPressed: () {
+                  // Handle categories
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  currentTab == 2 ? Icons.favorite : Icons.favorite_outline,
+                  color: currentTab == 2
+                      ? AppColors.brandColor
+                      : AppColors.blackColor,
+                  size: 24,
+                ),
+                onPressed: () {
+                  // Handle favourites
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  currentTab == 3 ? Icons.person : Icons.person_outline,
+                  color: currentTab == 3
+                      ? AppColors.brandColor
+                      : AppColors.blackColor,
+                  size: 24,
+                ),
+                onPressed: () {
+                  // Handle profile
+                },
               ),
             ],
           ),
