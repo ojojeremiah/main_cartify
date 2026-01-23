@@ -16,7 +16,10 @@ class _AllProductsState extends State<AllProducts> {
   @override
   void initState() {
     super.initState();
-    context.read<ProductNotifier>().fetchProducts();
+    
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProductNotifier>().fetchProducts();
+    });
   }
 
   @override
@@ -37,9 +40,8 @@ class _AllProductsState extends State<AllProducts> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) =>
-                  Descriptions(products: item),
-                )
+                  builder: (_) => Descriptions(products: item),
+                ),
               );
             },
             child: Stack(
@@ -78,8 +80,6 @@ class _AllProductsState extends State<AllProducts> {
                       // favouriteNotifier.updateFavourites(item);
                     },
                     icon: Icon(
-                      // isFavourite
-                      //     ? Icons.favorite
                       Icons.favorite_outline,
                       color: Colors.redAccent,
                       size: Dimension.mediumsize,
@@ -125,9 +125,7 @@ class _AllProductsState extends State<AllProducts> {
                     icon: Container(
                       decoration: BoxDecoration(
                         color: AppColors.brandColor,
-                        borderRadius: BorderRadius.circular(
-                          Dimension.mediumsize,
-                        ),
+                        borderRadius: BorderRadius.circular(Dimension.mediumsize),
                       ),
                       child: const Icon(
                         Icons.add,

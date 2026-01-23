@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:main_cartify/data/service/dioclient.dart';
+import 'package:main_cartify/data/service/firebase_auth_service.dart';
 import 'package:main_cartify/data/service/products_service.dart';
+import 'package:main_cartify/domain/repositories/firebase_auth_service.dart';
 import 'package:main_cartify/domain/repositories/products.dart';
+import 'package:main_cartify/domain/use_cases/firebase_auth.dart';
 import 'package:main_cartify/domain/use_cases/products.dart';
+import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/products.dart';
 
 final getIt = GetIt.instance;
@@ -11,9 +15,24 @@ final getIt = GetIt.instance;
 Future<void> dependencyInjection() async {
   getIt.registerSingleton(Dio());
   getIt.registerSingleton(DioClient(getIt<Dio>()));
-  getIt.registerSingleton<ProductsRepository>(
-    ProductService(dioClient: getIt<DioClient>()),
+  getIt.registerLazySingleton<ProductsRepository>(
+    () => ProductService(dioClient: getIt<DioClient>()),
   );
-  getIt.registerSingleton(ProductUseCase(getIt<ProductsRepository>()));
-  getIt.registerSingleton(ProductNotifier(getIt<ProductUseCase>()));
+  getIt.registerLazySingleton<ProductUseCase>(
+    () => ProductUseCase(getIt<ProductsRepository>()),
+  );
+  getIt.registerSingleton<ProductNotifier>(
+    ProductNotifier(getIt<ProductUseCase>()),
+  );
+  getIt.registerLazySingleton<FirebaseAuthServiceRepository>(
+    () => FirebaseAuthServiceImpl(),
+  );
+
+  getIt.registerLazySingleton<FirebaseAuthUseCases>(
+    () => FirebaseAuthUseCases(getIt<FirebaseAuthServiceRepository>()),
+  );
+
+  getIt.registerFactory<FirebaseAuthServiceProvider>(
+    () => FirebaseAuthServiceProvider(getIt<FirebaseAuthUseCases>()),
+  );
 }

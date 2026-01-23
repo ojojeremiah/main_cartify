@@ -1,16 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:main_cartify/l10n/app_localizations.dart';
 import 'package:main_cartify/modules/startup/features/splashscreen/presentation/screens/splashscreen.dart';
 import 'package:main_cartify/presentation/presentation_logic/dependency_injector.dart';
+import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/products.dart';
 import 'package:main_cartify/utils/app_theme.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 
-Future<void> main() async {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
@@ -32,6 +36,7 @@ class MyApp extends StatelessWidget {
         return MultiProvider(
           providers: [
             ChangeNotifierProvider(create: (_) => getIt<ProductNotifier>()),
+            ChangeNotifierProvider(create: (_) => getIt<FirebaseAuthServiceProvider>()),
           ],
           child: Builder(
             builder: (context) {
