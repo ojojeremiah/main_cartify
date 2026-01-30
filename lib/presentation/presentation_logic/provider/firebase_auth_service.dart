@@ -2,11 +2,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:main_cartify/domain/use_cases/firebase_auth.dart';
+import 'package:main_cartify/domain/use_cases/signin_usecase.dart';
+import 'package:main_cartify/domain/use_cases/signout_usevase.dart';
+import 'package:main_cartify/domain/use_cases/signup_usecase.dart';
 
 enum AuthDataState { idle, loading, success, error }
 
 class FirebaseAuthServiceProvider extends ChangeNotifier {
-  final FirebaseAuthUseCases _authUseCases;
+  final SignInUseCase _signInUseCase;
+  final SignUpUseCase _signUpUseCase;
+  final SignOutUseCase _signOutUseCase;
 
   final Future<void> Function(String msg) toastFn;
 
@@ -19,7 +24,7 @@ class FirebaseAuthServiceProvider extends ChangeNotifier {
   String get successMessage => _successMessage;
 
   FirebaseAuthServiceProvider(
-    this._authUseCases, {
+    this._signInUseCase, this._signUpUseCase, this._signOutUseCase, {
     Future<void> Function(String msg)? toast,
   }) : toastFn = toast ??
             ((msg) async {
@@ -51,11 +56,11 @@ class FirebaseAuthServiceProvider extends ChangeNotifier {
   Future<User?> signUp(String email, String password) async {
     try {
       _setLoading();
-      final user = await _authUseCases.signUp(email, password);
+      final user = await _signUpUseCase.call(email, password);
       _setSuccess('Account created successfully');
       return user;
     } catch (e) {
-      _setError(e.toString());
+      _setError('Sign up failed');
       return null;
     }
   }
@@ -63,11 +68,11 @@ class FirebaseAuthServiceProvider extends ChangeNotifier {
   Future<User?> signIn(String email, String password) async {
     try {
       _setLoading();
-      final user = await _authUseCases.signIn(email, password);
+      final user = await _signInUseCase.call(email, password);
       _setSuccess('Signed in successfully');
       return user;
     } catch (e) {
-      _setError(e.toString());
+      _setError('Sign in failed');
       return null;
     }
   }
@@ -75,13 +80,11 @@ class FirebaseAuthServiceProvider extends ChangeNotifier {
   Future<void> signOut() async {
     try {
       _setLoading();
-      await _authUseCases.signOut();
+      await _signOutUseCase.call();
       _setSuccess('Signed out successfully');
     } catch (e) {
-      _setError(e.toString());
+      _setError('Sign out failed');
     }
   }
 
-
-  Stream<User?> get authStateChanges => _authUseCases.authStateChanges;
 }

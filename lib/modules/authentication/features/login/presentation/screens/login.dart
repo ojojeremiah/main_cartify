@@ -144,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                             _confirmVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
+                                 size: Dimension.mmediumsize,
                           ),
                         ),
                       ),
@@ -197,7 +198,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  /// SOCIAL LOGIN (UI only)
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
