@@ -3,7 +3,7 @@ import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/domain/model/products.dart';
 import 'package:main_cartify/modules/commons/app_textstyles/app_textstyles.dart';
 import 'package:main_cartify/utils/app_colors.dart';
-import 'package:main_cartify/utils/context_extensions.dart';
+import 'package:main_cartify/utils/context_extension.dart';
 
 class Descriptions extends StatefulWidget {
   final Products products;
@@ -22,7 +22,7 @@ class _DescriptionsState extends State<Descriptions> {
         elevation: 0,
         backgroundColor: Colors.grey[100],
         title: Text(
-          context.l10n.details,
+          context.l10n.details, 
           style: AppTextstyles.appBarText,
         ),
       ),
@@ -117,7 +117,7 @@ class _DescriptionsState extends State<Descriptions> {
                           // add to cart logic
                         },
                         child: Text(
-                          'Add to cart',
+                          'Add to cart', 
                           style: AppTextstyles.xsmallSizelight,
                         ),
                       ),
