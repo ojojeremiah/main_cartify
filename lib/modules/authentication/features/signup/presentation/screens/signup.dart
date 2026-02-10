@@ -5,6 +5,7 @@ import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/authentication/features/login/presentation/screens/login.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/utils/app_colors.dart';
+import 'package:main_cartify/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
@@ -52,15 +53,15 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
 
-                  _label(Icons.email_outlined, 'Email', iconSize, fontSize),
+                  _label(Icons.email_outlined, context.l10n.email, iconSize, fontSize),
                   _inputField(
                     controller: _email,
                     hint: 'user@gmail.com',
                     padding: inputBarLength,
-                    validator: (v) => v!.isEmpty ? 'Email required' : null,
+                    validator: (v) => v!.isEmpty ? context.l10n.emailRequired : null,
                   ),
 
-                  _label(Icons.lock_outline, 'Password', iconSize, fontSize),
+                  _label(Icons.lock_outline, context.l10n.password, iconSize, fontSize),
                   Stack(
                     children: [
                       _inputField(
@@ -68,8 +69,7 @@ class _SignupState extends State<Signup> {
                         hint: 'Password',
                         padding: inputBarLength,
                         obscure: _confirmVisible,
-                        validator: (v) =>
-                            v!.isEmpty ? 'Password required' : null,
+                        validator: (v) => v!.isEmpty ? context.l10n.passwordRequired : null,
                       ),
                       Positioned(
                         right: 15,
@@ -217,8 +217,8 @@ class _SignupState extends State<Signup> {
                             MaterialPageRoute(builder: (_) => LoginPage()),
                           );
                         },
-                        child: const Text(
-                          'Login',
+                        child: Text(
+                          context.l10n.login,
                           style: TextStyle(color: AppColors.brandColor),
                         ),
                       ),

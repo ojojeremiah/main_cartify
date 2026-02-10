@@ -7,5 +7,35 @@
   "searchHere": "Search here",
   "@searchHere": {
     "description": "Hint text in the search bar"
+  },
+
+  "emailRequired": "Email Required",
+  "@emailRequired": {
+    "description": "Error message for email"
+  },
+
+  "passwordRequired": "Password Required",
+  "@passwordRequired":{
+    "description": "Error message for Password"
+  },
+
+  "login": "Login",
+  "@login": {
+    "description": "Login Button"
+  },
+  
+  "signup": "Sign up",
+  "@signup": {
+    "description": "Sign up button"
+  },
+
+  "email": "Email",
+  "@email": {
+    "description": "Email header Text"
+  },
+
+  "password": "Password",
+  "@password": {
+    "description": "Password header Text"
   }
 }

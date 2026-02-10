@@ -6,6 +6,7 @@ import 'package:main_cartify/modules/authentication/features/signup/presentation
 import 'package:main_cartify/modules/commons/bottom_navbar_widget/bottom_nav.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/utils/app_colors.dart';
+import 'package:main_cartify/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                         Icon(Icons.email_outlined, size: emailAndPasswordIconSize),
                         const SizedBox(width: 10),
                         Text(
-                          'Email',
+                          context.l10n.email,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: fontSize,
@@ -78,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextFormField(
                       controller: _email,
                       validator: (v) =>
-                          v == null || v.isEmpty ? 'Email Required' : null,
+                          v == null || v.isEmpty ? context.l10n.emailRequired : null,
                       decoration: InputDecoration(
                         hintText: 'user@gmail.com',
                         filled: true,
@@ -99,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                         Icon(Icons.lock_outline, size: emailAndPasswordIconSize),
                         const SizedBox(width: 10),
                         Text(
-                          'Password',
+                          context.l10n.password,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: fontSize,
@@ -118,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: TextFormField(
                           controller: _password,
                           validator: (v) =>
-                              v == null || v.isEmpty ? 'Password Required' : null,
+                              v == null || v.isEmpty ? context.l10n.passwordRequired : null,
                           obscureText: _confirmVisible,
                           decoration: InputDecoration(
                             hintText: 'Password',
@@ -188,8 +189,8 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.white,
                               ),
                             )
-                          : const Text(
-                              'Log In',
+                          : Text(
+                              context.l10n.login,
                               style: TextStyle(
                                 color: AppColors.whiteColor,
                                 fontSize: Dimension.msmall,
@@ -277,8 +278,8 @@ class _LoginPageState extends State<LoginPage> {
                               MaterialPageRoute(builder: (_) => const Signup()),
                             );
                           },
-                          child: const Text(
-                            'Sign up',
+                          child:  Text(
+                            context.l10n.signup,
                             style: TextStyle(color: AppColors.brandColor),
                           ),
                         ),

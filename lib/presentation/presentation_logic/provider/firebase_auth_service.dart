@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:main_cartify/domain/use_cases/firebase_auth.dart';
 import 'package:main_cartify/domain/use_cases/signin_usecase.dart';
 import 'package:main_cartify/domain/use_cases/signout_usevase.dart';
 import 'package:main_cartify/domain/use_cases/signup_usecase.dart';
