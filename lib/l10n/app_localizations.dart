@@ -106,6 +106,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search here'**
   String get searchHere;
+
+  /// Error message for email
+  ///
+  /// In en, this message translates to:
+  /// **'Email Required'**
+  String get emailRequired;
+
+  /// Error message for Password
+  ///
+  /// In en, this message translates to:
+  /// **'Password Required'**
+  String get passwordRequired;
+
+  /// Login Button
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// Sign up button
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signup;
+
+  /// Email header Text
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// Password header Text
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

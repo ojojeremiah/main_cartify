@@ -7,5 +7,36 @@
   "searchHere": "Buscar aquí",
   "@searchHere": {
     "description": "Hint text in the search bar"
-  }
+  },
+
+  "emailRequired": "Correo electrónico requerido",
+  "@emailRequired": {
+    "description": "Error message for email"
+  },
+
+  "passwordRequired": "Contraseña requerida",
+  "@passwordRequired": {
+    "description": "Error message for Password"
+  },
+
+  "login": "Login",
+  "@login": {
+    "description": "Login Button"
+  },
+
+  "signup": "Registrarse",
+  "@signup": {
+   "description": "Sign up button"
+  },
+
+  "email": "Correo electrónico",
+  "@email": {
+   "description": "Email header Text"
+  },
+
+ "password": "Contraseña",
+ "@password": {
+  "description": "Password header Text"
+ }
+
 }

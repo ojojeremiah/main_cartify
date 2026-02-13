@@ -56,4 +56,4 @@ class ProductNotifier extends ChangeNotifier {
       _setState(newState: ProductDataState.success);
     }
   }
-}
+}  

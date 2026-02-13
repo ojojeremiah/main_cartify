@@ -13,4 +13,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchHere => 'Search here';
+
+  @override
+  String get emailRequired => 'Email Required';
+
+  @override
+  String get passwordRequired => 'Password Required';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get signup => 'Sign up';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
 }

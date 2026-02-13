@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/authentication/features/login/presentation/screens/login.dart';
+import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/utils/app_colors.dart';
+import 'package:main_cartify/utils/context_extension.dart';
+import 'package:provider/provider.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -17,16 +20,21 @@ class _SignupState extends State<Signup> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool _confirmVisible = true;
-  bool task = false;
+
+  @override
+  void dispose() {
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = MediaQuery.sizeOf(context).width / 26;
-    final double inputBarLength = MediaQuery.sizeOf(context).width / 70;
-    final double emailAndPasswordIconSize =
-        MediaQuery.sizeOf(context).width / 16;
+    final auth = context.watch<FirebaseAuthServiceProvider>();
 
-    // final userNotifier = context.watch<UserNotifier>();
+    final double fontSize = MediaQuery.sizeOf(context).width / 30;
+    final double inputBarLength = MediaQuery.sizeOf(context).width / 70;
+    final double iconSize = MediaQuery.sizeOf(context).width / 20;
 
     return Scaffold(
       body: Padding(
@@ -39,166 +47,103 @@ class _SignupState extends State<Signup> {
                 children: [
                   const Text(
                     'Create an Account',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  // Email field
-                  Container(
-                    margin: const EdgeInsets.only(left: 20, top: 20),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.email_outlined,
-                          size: emailAndPasswordIconSize,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            'Email',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: fontSize,
-                            ),
-                          ),
-                        ),
-                      ],
+                    style: TextStyle(
+                      fontSize: Dimension.xsmallSize,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: inputBarLength,
-                      right: inputBarLength,
-                    ),
-                    width: ScreenUtil().setWidth(350),
-                    margin: const EdgeInsets.only(top: 10),
-                    child: TextFormField(
-                      key: const Key('emailField'),
-                      controller: _email,
-                      validator: (v) => v!.isEmpty ? 'Email Required' : null,
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.all(10),
-                        hintText: 'user@gmail.com',
-                        filled: true,
-                        fillColor: Colors.grey[100],
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                    ),
+
+                  _label(Icons.email_outlined, context.l10n.email, iconSize, fontSize),
+                  _inputField(
+                    controller: _email,
+                    hint: 'user@gmail.com',
+                    padding: inputBarLength,
+                    validator: (v) => v!.isEmpty ? context.l10n.emailRequired : null,
                   ),
-                  // Password field
-                  Container(
-                    margin: const EdgeInsets.only(left: 20, top: 20),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.lock_outline,
-                          size: emailAndPasswordIconSize,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            'Password',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: fontSize,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+
+                  _label(Icons.lock_outline, context.l10n.password, iconSize, fontSize),
                   Stack(
                     children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                          left: inputBarLength,
-                          right: inputBarLength,
-                        ),
-                        width: ScreenUtil().setWidth(350),
-                        margin: const EdgeInsets.only(top: 10, left: 5),
-                        child: TextFormField(
-                          key: const Key('passwordField'),
-                          controller: _password,
-                          validator: (v) =>
-                              v!.isEmpty ? 'Password Required' : null,
-                          obscureText: _confirmVisible,
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.all(10),
-                            hintText: 'Password',
-                            filled: true,
-                            fillColor: Colors.grey[100],
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-                        ),
+                      _inputField(
+                        controller: _password,
+                        hint: 'Password',
+                        padding: inputBarLength,
+                        obscure: _confirmVisible,
+                        validator: (v) => v!.isEmpty ? context.l10n.passwordRequired : null,
                       ),
                       Positioned(
                         right: 15,
-                        top: 18,
+                        top: 22,
                         child: GestureDetector(
-                          key: const Key('togglePasswordVisibility'),
-                          onTap: () {
-                            setState(() {
-                              _confirmVisible = !_confirmVisible;
-                            });
-                          },
+                          onTap: () => setState(
+                            () => _confirmVisible = !_confirmVisible,
+                          ),
                           child: Icon(
                             _confirmVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
+                            size: Dimension.mmediumsize,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  // Login button
+
                   Container(
                     width: ScreenUtil().setWidth(330),
                     margin: const EdgeInsets.only(top: 20),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: AppColors.brandColor,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextButton(
-                      onPressed: () {
-                        if (!_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          if (_email.text.isEmpty || _password.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Fill Required fields'),
+                      onPressed: auth.authState == AuthDataState.loading
+                          ? null
+                          : () async {
+                              if (!_formKey.currentState!.validate()) return;
+
+                              await auth.signUp(
+                                _email.text.trim(),
+                                _password.text.trim(),
+                              );
+
+                              if (auth.authState == AuthDataState.success) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => LoginPage(),
+                                  ),
+                                );
+                              }
+                            },
+                      child: auth.authState == AuthDataState.loading
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
                               ),
-                            );
-                          }
-                          //  Get.to( AccountValidation());
-                        } else {
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(builder: (_) => LoginPage()),
-                          // );
-                        }
-                      },
-                      child: const Text(
-                        'Sign up',
-                        style: TextStyle(
-                          color: AppColors.whiteColor,
-                          fontSize: Dimension.xsmallSize,
-                        ),
-                      ),
+                            )
+                          : const Text(
+                              'Sign up',
+                              style: TextStyle(
+                                color: AppColors.whiteColor,
+                                fontSize: Dimension.msmall,
+                              ),
+                            ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        'Or Continue with',
-                        style: TextStyle(fontSize: Dimension.msmall),
-                      ),
-                    ),
+
+                  const SizedBox(height: 15),
+
+                  const Text(
+                    'Or Continue with',
+                    style: TextStyle(fontSize: Dimension.mxssmall),
                   ),
+
+                  const SizedBox(height: 10),
+
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Row(
@@ -210,7 +155,7 @@ class _SignupState extends State<Signup> {
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 1,
-                              color: const Color.fromRGBO(204, 204, 204, 1),
+                              color: const Color(0xFFCCCCCC),
                             ),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(5),
@@ -258,33 +203,75 @@ class _SignupState extends State<Signup> {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 145),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 85),
-                          child: const Text("Don't have an account?"),
+
+                  const SizedBox(height: 80),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Already have an account?"),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (_) => LoginPage()),
+                          );
+                        },
+                        child: Text(
+                          context.l10n.login,
+                          style: TextStyle(color: AppColors.brandColor),
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (_) => LoginPage()),
-                            );
-                          },
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(color: AppColors.brandColor),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _label(IconData icon, String text, double iconSize, double fontSize) {
+    return Container(
+      margin: const EdgeInsets.only(left: 20, top: 20),
+      child: Row(
+        children: [
+          Icon(icon, size: iconSize),
+          const SizedBox(width: 10),
+          Text(
+            text,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _inputField({
+    required TextEditingController controller,
+    required String hint,
+    required double padding,
+    bool obscure = false,
+    String? Function(String?)? validator,
+  }) {
+    return Container(
+      width: ScreenUtil().setWidth(350),
+      margin: const EdgeInsets.only(top: 10),
+      padding: EdgeInsets.symmetric(horizontal: padding),
+      child: TextFormField(
+        controller: controller,
+        validator: validator,
+        obscureText: obscure,
+        decoration: InputDecoration(
+          hintText: hint,
+          filled: true,
+          fillColor: Colors.grey[100],
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide.none,
+          ),
         ),
       ),
     );

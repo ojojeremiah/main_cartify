@@ -1,5 +1,4 @@
 
-
 class ErrorMessageHelper {
   static String getUserFriendlyMessage(String technicalError) {
     if (technicalError.contains('network') || technicalError.contains('connection')) {
