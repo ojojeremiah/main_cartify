@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/commons/appBars_widgets/home_screen.dart';
 import 'package:main_cartify/modules/home/features/homescreen/presentation/screens/home.dart';
+import 'package:main_cartify/modules/shoppingcart/presentation/screens/shoppingcart.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 
 class BottomNav extends StatefulWidget {
@@ -55,7 +56,14 @@ class _BottomNavState extends State<BottomNav> {
           Icons.shopping_bag_outlined,
           color: AppColors.lightCardColor,
         ),
-        onPressed: () {},
+        onPressed: () {
+           Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ShoppingCart(),
+                ),
+              );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
