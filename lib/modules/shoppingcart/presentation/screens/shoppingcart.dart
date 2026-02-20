@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/shopping_cart.dart';
 import 'package:main_cartify/utils/app_colors.dart';
+import 'package:main_cartify/utils/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class ShoppingCart extends StatelessWidget {
@@ -18,8 +19,8 @@ class ShoppingCart extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.grey[100],
         centerTitle: true,
-        title: const Text(
-          'Cart',
+        title: Text(
+          context.l10n.cart,
           style: TextStyle(
             color: AppColors.blackColor,
             fontSize: Dimension.xmsmallSize,
@@ -41,14 +42,16 @@ class ShoppingCart extends StatelessWidget {
                         key: Key(product.id.toString()),
                         background: Container(
                           alignment: Alignment.centerRight,
-                          padding:
-                              const EdgeInsets.only(right: 20),
+                          padding: const EdgeInsets.only(
+                            right: Dimension.mediumsize,
+                          ),
                           margin: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
+                            horizontal: Dimension.mediumsize,
+                            vertical: Dimension.small,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.brandColor,
-                            borderRadius:
-                                BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           child: const Icon(
                             Icons.delete_outline,
@@ -58,26 +61,22 @@ class ShoppingCart extends StatelessWidget {
 
                         /// CONFIRM DELETE
                         confirmDismiss: (direction) async {
-                          final result =
-                              await showDialog<bool>(
+                          final result = await showDialog<bool>(
                             context: context,
                             builder: (_) => AlertDialog(
-                              title:
-                                  const Text("Remove Item"),
+                              title: const Text('Remove Item'),
                               content: const Text(
-                                  "Are you sure you want to remove this?"),
+                                'Are you sure you want to remove this?',
+                              ),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
-                                      Navigator.pop(
-                                          context, false),
-                                  child: const Text("No"),
+                                      Navigator.pop(context, false),
+                                  child: const Text('No'),
                                 ),
                                 TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(
-                                          context, true),
-                                  child: const Text("Yes"),
+                                  onPressed: () => Navigator.pop(context, true),
+                                  child: const Text('Yes'),
                                 ),
                               ],
                             ),
@@ -85,8 +84,7 @@ class ShoppingCart extends StatelessWidget {
 
                           if (result == true) {
                             await context
-                                .read<
-                                    ShoppingCartNotifier>()
+                                .read<ShoppingCartNotifier>()
                                 .removeItem(product);
                           }
 
@@ -94,124 +92,99 @@ class ShoppingCart extends StatelessWidget {
                         },
 
                         child: Container(
-                          height: 200,
-                          margin:
-                              const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 10),
+                          height: Dimension.xmlargeSize,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: Dimension.mediumsize,
+                            vertical: Dimension.small,
+                          ),
                           decoration: BoxDecoration(
-                            color:
-                                AppColors.lightCardColor,
-                            borderRadius:
-                                BorderRadius.circular(20),
+                            color: AppColors.lightCardColor,
+                            borderRadius: BorderRadius.circular(
+                              Dimension.mediumsize,
+                            ),
                           ),
                           child: Padding(
-                            padding:
-                                const EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(15),
                             child: Row(
                               children: [
                                 /// LEFT SIDE
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment
-                                            .start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        product.title ??
-                                            "",
+                                        product.title ?? '',
                                         maxLines: 1,
-                                        overflow:
-                                            TextOverflow
-                                                .ellipsis,
-                                        style:
-                                            const TextStyle(
-                                          fontWeight:
-                                              FontWeight
-                                                  .bold,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
                                           fontSize: 15,
                                         ),
                                       ),
-                                      const SizedBox(
-                                          height: 10),
+                                      const SizedBox(height: Dimension.small),
 
                                       Row(
                                         children: [
                                           Text(
-                                              "Review (${product.rating?.rate ?? 0}"),
+                                            'Review (${product.rating?.rate ?? 0}',
+                                          ),
                                           const Icon(
                                             Icons.star,
                                             size: 16,
-                                            color: Colors
-                                                .orange,
+                                            color: Colors.orange,
                                           ),
-                                          const Text(")"),
+                                          const Text(')'),
                                         ],
                                       ),
 
-                                      const SizedBox(
-                                          height: 10),
+                                      const SizedBox(height: Dimension.small),
 
                                       Text(
-                                        "\$ ${(product.price ?? 0) * product.quantity}",
-                                        style:
-                                            const TextStyle(
-                                          fontWeight:
-                                              FontWeight
-                                                  .bold,
+                                        '\$ ${(product.price ?? 0) * product.quantity}',
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
 
-                                      const SizedBox(
-                                          height: 10),
+                                      const SizedBox(height: Dimension.small),
 
                                       /// QUANTITY CONTROLS
                                       Row(
                                         children: [
                                           IconButton(
-                                            onPressed:
-                                                () async {
-                                              if (product
-                                                      .quantity <=
-                                                  1) {
+                                            onPressed: () async {
+                                              if (product.quantity <= 1) {
                                                 await context
                                                     .read<
-                                                        ShoppingCartNotifier>()
-                                                    .removeItem(
-                                                        product);
+                                                      ShoppingCartNotifier
+                                                    >()
+                                                    .removeItem(product);
                                               } else {
                                                 await context
                                                     .read<
-                                                        ShoppingCartNotifier>()
-                                                    .deleteProducts(
-                                                        product);
+                                                      ShoppingCartNotifier
+                                                    >()
+                                                    .deleteProducts(product);
                                               }
                                             },
-                                            icon:
-                                                _circleButton(
-                                                    Icons
-                                                        .remove),
+                                            icon: _circleButton(Icons.remove),
                                           ),
                                           SizedBox(
-                                            width: 30,
+                                            width: Dimension.xmmmedium,
                                             child: Center(
                                               child: Text(
-                                                  "${product.quantity}"),
+                                                '${product.quantity}',
+                                              ),
                                             ),
                                           ),
                                           IconButton(
-                                            onPressed:
-                                                () async {
+                                            onPressed: () async {
                                               await context
-                                                  .read<
-                                                      ShoppingCartNotifier>()
-                                                  .updateProducts(
-                                                      product);
+                                                  .read<ShoppingCartNotifier>()
+                                                  .updateProducts(product);
                                             },
-                                            icon:
-                                                _circleButton(
-                                                    Icons
-                                                        .add),
+                                            icon: _circleButton(Icons.add),
                                           ),
                                         ],
                                       ),
@@ -221,19 +194,11 @@ class ShoppingCart extends StatelessWidget {
 
                                 /// IMAGE
                                 Container(
-                                  width: 130,
-                                  decoration:
-                                      BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius
-                                            .circular(
-                                                15),
-                                    image:
-                                        DecorationImage(
-                                      image: NetworkImage(
-                                          product
-                                                  .image ??
-                                              ""),
+                                  width: Dimension.msslargeSize,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                      image: NetworkImage(product.image ?? ''),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -249,26 +214,21 @@ class ShoppingCart extends StatelessWidget {
 
           /// TOTAL SECTION
           Container(
-            height: 120,
+            height: Dimension.msssmallSize,
             padding: const EdgeInsets.all(15),
             color: AppColors.lightCardColor,
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
                       'Total price:',
-                      style: TextStyle(
-                          fontSize: Dimension.smallSize,
-                            ),
+                      style: TextStyle(fontSize: Dimension.smallSize),
                     ),
                     Text(
                       '\$ ${cart.total.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                          fontSize: Dimension.xsmallSize,
-                          ),
+                      style: const TextStyle(fontSize: Dimension.xsmallSize),
                     ),
                   ],
                 ),
@@ -276,35 +236,28 @@ class ShoppingCart extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(
-                      backgroundColor:
-                          AppColors.brandColor,
-                      shape:
-                          RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius
-                                .circular(10),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.brandColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(Dimension.small),
                       ),
                     ),
-                    onPressed:
-                        cart.products.isEmpty
-                            ? null
-                            : () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (_) =>
-                                //         const CheckOut(),
-                                //   ),
-                                // );
-                              },
+                    onPressed: cart.products.isEmpty
+                        ? null
+                        : () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (_) =>
+                            //         const CheckOut(),
+                            //   ),
+                            // );
+                          },
                     child: const Text(
                       'Checkout',
                       style: TextStyle(
-                        color:
-                            AppColors.whiteColor,
-                        fontSize: 18,
+                        color: AppColors.whiteColor,
+                        fontSize: Dimension.xmsmallSize,
                       ),
                     ),
                   ),
@@ -321,13 +274,12 @@ class ShoppingCart extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brandColor,
-        borderRadius:
-            BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Dimension.mediumsize),
       ),
       padding: const EdgeInsets.all(5),
       child: Icon(
         icon,
-        size: 18,
+        size: Dimension.xmsmallSize,
         color: AppColors.lightCardColor,
       ),
     );
