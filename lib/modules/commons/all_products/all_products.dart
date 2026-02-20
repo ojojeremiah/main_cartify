@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:main_cartify/dimension/dimension.dart';
 import 'package:main_cartify/modules/description/presentation/screens/description.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/products.dart';
+import 'package:main_cartify/presentation/presentation_logic/provider/shopping_cart.dart';
 import 'package:main_cartify/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,7 @@ class _AllProductsState extends State<AllProducts> {
   @override
   Widget build(BuildContext context) {
     final productNotifier = context.watch<ProductNotifier>();
+    final shoppingCartNotifier = context.watch<ShoppingCartNotifier>();
 
     return SizedBox(
       height: 2000,
@@ -120,7 +122,7 @@ class _AllProductsState extends State<AllProducts> {
                   right: Dimension.xxssmallest,
                   child: IconButton(
                     onPressed: () {
-                      // shoppingCartNotifier.updateProducts(item);
+                      shoppingCartNotifier.updateProducts(item);
                     },
                     icon: Container(
                       decoration: BoxDecoration(

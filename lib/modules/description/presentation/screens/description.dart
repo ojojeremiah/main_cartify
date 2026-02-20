@@ -21,10 +21,7 @@ class _DescriptionsState extends State<Descriptions> {
         leading: const BackButton(color: AppColors.blackColor),
         elevation: 0,
         backgroundColor: Colors.grey[100],
-        title: Text(
-          context.l10n.details, 
-          style: AppTextstyles.appBarText,
-        ),
+        title: Text(context.l10n.details, style: AppTextstyles.appBarText),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -117,7 +114,7 @@ class _DescriptionsState extends State<Descriptions> {
                           // add to cart logic
                         },
                         child: Text(
-                          'Add to cart', 
+                          'Add to cart',
                           style: AppTextstyles.xsmallSizelight,
                         ),
                       ),

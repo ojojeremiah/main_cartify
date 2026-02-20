@@ -37,5 +37,10 @@
   "password": "Password",
   "@password": {
     "description": "Password header Text"
+  },
+
+  "cart": "Cart",
+  "@cart": {
+    "description": "Cart AppBar"
   }
 }

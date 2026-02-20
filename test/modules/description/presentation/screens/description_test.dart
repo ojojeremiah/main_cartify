@@ -20,7 +20,7 @@ void main() {
       image:
           "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
       rating: Rating(rate: 3.9, count: 120),
-      quantity: null,
+      quantity: 0,
       totalprice: null,
     );
 

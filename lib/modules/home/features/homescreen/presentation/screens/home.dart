@@ -13,7 +13,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // final ProductController productController = Get.put(ProductController());
 
   @override
   void initState() {
