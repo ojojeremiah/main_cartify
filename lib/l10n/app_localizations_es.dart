@@ -31,4 +31,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get password => 'Contraseña';
+
+  @override
+  String get cart => 'Carrito';
 }

@@ -142,6 +142,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password'**
   String get password;
+
+  /// Cart AppBar
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -37,6 +37,11 @@
  "password": "Contraseña",
  "@password": {
   "description": "Password header Text"
- }
+ },
+
+ "cart": "Carrito",
+ "@cart": {
+  "description": "Barra superior del carrito"
+}
 
 }

@@ -39,7 +39,7 @@ void main() {
           rating: Rating(rate: 3.9, count: 120),
           description: '',
           category: '',
-          quantity: null,
+          quantity: 0,
           totalprice: null,
         ),
         Products(
@@ -50,7 +50,7 @@ void main() {
           rating: Rating(rate: 4.1, count: 259),
           description: '',
           category: '',
-          quantity: null,
+          quantity: 0,
           totalprice: null,
         ),
       ];
@@ -75,7 +75,7 @@ void main() {
           rating: Rating(rate: 3.9, count: 120),
           description: '',
           category: '',
-          quantity: null,
+          quantity: 0,
           totalprice: null,
         ),
       ];

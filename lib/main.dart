@@ -8,6 +8,7 @@ import 'package:main_cartify/modules/startup/features/splashscreen/presentation/
 import 'package:main_cartify/presentation/presentation_logic/dependency_injector.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/firebase_auth_service.dart';
 import 'package:main_cartify/presentation/presentation_logic/provider/products.dart';
+import 'package:main_cartify/presentation/presentation_logic/provider/shopping_cart.dart';
 import 'package:main_cartify/utils/app_theme.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(create: (_) => getIt<ProductNotifier>()),
             ChangeNotifierProvider(create: (_) => getIt<FirebaseAuthServiceProvider>()),
+            ChangeNotifierProvider(create:  (_) => getIt<ShoppingCartNotifier>()),
           ],
           child: Builder(
             builder: (context) {
