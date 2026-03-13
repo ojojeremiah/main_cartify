@@ -18,7 +18,7 @@ class Products {
     required this.image,
     required this.rating,
     required this.quantity,
-    required this.totalprice,
+     this.totalprice,
   });
 
   Products copyWith({
