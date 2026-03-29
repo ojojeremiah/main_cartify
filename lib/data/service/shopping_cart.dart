@@ -8,7 +8,9 @@ import 'package:main_cartify/domain/repositories/shopping_cart.dart';
 class ShoppingCartService extends ShoppingCartRepository{
   static final ShoppingCartService _service = ShoppingCartService._internal();
   ShoppingCartService._internal();
-  factory ShoppingCartService({required DioClient dioClient}) => _service;
+  factory ShoppingCartService({
+    FlutterSecureStorage? storage,
+    required DioClient dioClient}) => _service;
 
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
 

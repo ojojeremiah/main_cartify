@@ -7,6 +7,11 @@ enum CartDataState { idle, loading, success, error }
 
 class ShoppingCartNotifier extends ChangeNotifier {
   final ShoppingCartUseCase shoppingCartUseCase;
+    ShoppingCartNotifier(
+    this.shoppingCartUseCase, {
+    Future<void> Function({required String msg})? toast,
+  }) : toastFn = toast ?? Fluttertoast.showToast;
+
   final Future<void> Function({required String msg}) toastFn;
 
   CartDataState _dataState = CartDataState.idle;
@@ -21,10 +26,6 @@ class ShoppingCartNotifier extends ChangeNotifier {
   List<Products> get products => _products;
   double get total => _total;
 
-  ShoppingCartNotifier(
-    this.shoppingCartUseCase, {
-    Future<void> Function({required String msg})? toast,
-  }) : toastFn = toast ?? Fluttertoast.showToast;
 
   void _setState({
     required CartDataState newState,
@@ -62,7 +63,8 @@ class ShoppingCartNotifier extends ChangeNotifier {
 
   /// INCREASE PRODUCT QUANTITY / ADD
   Future<void> updateProducts(Products product) async {
-    final result = await shoppingCartUseCase.getCartItems();
+  try {
+    final result = await shoppingCartUseCase.getCartItems(); // ← Now inside try
     final productsList = result.$1;
     final errorMessage = result.$2;
 
@@ -71,43 +73,39 @@ class ShoppingCartNotifier extends ChangeNotifier {
       return;
     }
 
-    try {
-      final updatedList = List<Products>.from(productsList!);
+    final updatedList = List<Products>.from(productsList!);
 
-      final index =
-          updatedList.indexWhere((e) => e.id == product.id);
+    final index = updatedList.indexWhere((e) => e.id == product.id);
 
-      if (index != -1) {
-        final existingProduct = updatedList[index];
+    if (index != -1) {
+      final existingProduct = updatedList[index];
 
-        updatedList[index] = existingProduct.copyWith(
-          quantity: (existingProduct.quantity ?? 0) + 1,
-        );
+      updatedList[index] = existingProduct.copyWith(
+        quantity: (existingProduct.quantity ?? 0) + 1,
+      );
 
-        final updateResult =
-            await shoppingCartUseCase.updateCartItems(updatedList);
+      final updateResult = await shoppingCartUseCase.updateCartItems(updatedList);
 
-        if (!updateResult.$1) {
-          await toastFn(msg: updateResult.$2);
-          return;
-        }
-      } else {
-        final addResult =
-            await shoppingCartUseCase.addToCart(
-              product.copyWith(quantity: 1),
-            );
-
-        if (!addResult.$1) {
-          await toastFn(msg: addResult.$2);
-          return;
-        }
+      if (!updateResult.$1) {
+        await toastFn(msg: updateResult.$2);
+        return;
       }
+    } else {
+      final addResult = await shoppingCartUseCase.addToCart(
+        product.copyWith(quantity: 1),
+      );
 
-      await fetchProducts();
-    } catch (e) {
-      await toastFn(msg: "Failed to update cart");
+      if (!addResult.$1) {
+        await toastFn(msg: addResult.$2);
+        return;
+      }
     }
+
+    await fetchProducts();
+  } catch (e) {
+    await toastFn(msg: "Failed to update cart");
   }
+}
 
   /// DECREASE PRODUCT QUANTITY
   Future<void> deleteProducts(Products product) async {
